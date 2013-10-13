@@ -35,7 +35,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(559, 421);
+            this.btnSave.Location = new System.Drawing.Point(674, 421);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(105, 41);
             this.btnSave.TabIndex = 5;
@@ -47,18 +47,21 @@
             this.dgvAdd.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAdd.Location = new System.Drawing.Point(21, 20);
             this.dgvAdd.Name = "dgvAdd";
-            this.dgvAdd.Size = new System.Drawing.Size(643, 395);
+            this.dgvAdd.Size = new System.Drawing.Size(758, 395);
             this.dgvAdd.TabIndex = 4;
             // 
             // FrmSedanInjuryTime
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(676, 476);
+            this.ClientSize = new System.Drawing.Size(791, 476);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.dgvAdd);
             this.Name = "FrmSedanInjuryTime";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmSedanInjuryTime";
+            this.Load += new System.EventHandler(this.FrmSedanInjuryTime_Load);
+            this.Resize += new System.EventHandler(this.FrmSedanInjuryTime_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAdd)).EndInit();
             this.ResumeLayout(false);
 

@@ -50,15 +50,18 @@
             this.dgvAdd.Size = new System.Drawing.Size(546, 395);
             this.dgvAdd.TabIndex = 4;
             // 
-            // FrmCatCar
+            // FrmSedanCatCar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(575, 466);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.dgvAdd);
-            this.Name = "FrmCatCar";
+            this.Name = "FrmSedanCatCar";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmCatCar";
+            this.Load += new System.EventHandler(this.FrmSedanCatCar_Load);
+            this.Resize += new System.EventHandler(this.FrmSedanCatCar_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAdd)).EndInit();
             this.ResumeLayout(false);
 

@@ -50,14 +50,15 @@
             this.dgvAdd.Size = new System.Drawing.Size(546, 395);
             this.dgvAdd.TabIndex = 4;
             // 
-            // FrmRY01
+            // FrmSedanRY01
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(576, 468);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.dgvAdd);
-            this.Name = "FrmRY01";
+            this.Name = "FrmSedanRY01";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmRY01";
             ((System.ComponentModel.ISupportInitialize)(this.dgvAdd)).EndInit();
             this.ResumeLayout(false);

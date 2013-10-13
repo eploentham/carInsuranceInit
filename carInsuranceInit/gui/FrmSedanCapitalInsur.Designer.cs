@@ -35,7 +35,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(643, 417);
+            this.btnSave.Location = new System.Drawing.Point(765, 417);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(96, 41);
             this.btnSave.TabIndex = 5;
@@ -47,18 +47,21 @@
             this.dgvAdd.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAdd.Location = new System.Drawing.Point(12, 14);
             this.dgvAdd.Name = "dgvAdd";
-            this.dgvAdd.Size = new System.Drawing.Size(727, 395);
+            this.dgvAdd.Size = new System.Drawing.Size(849, 395);
             this.dgvAdd.TabIndex = 4;
             // 
             // FrmSedanCapitalInsur
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(751, 470);
+            this.ClientSize = new System.Drawing.Size(873, 470);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.dgvAdd);
             this.Name = "FrmSedanCapitalInsur";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmSedanCapitalInsur";
+            this.Load += new System.EventHandler(this.FrmSedanCapitalInsur_Load);
+            this.Resize += new System.EventHandler(this.FrmSedanCapitalInsur_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAdd)).EndInit();
             this.ResumeLayout(false);
 

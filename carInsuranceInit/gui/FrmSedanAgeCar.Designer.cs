@@ -38,12 +38,12 @@
             this.dgvAdd.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAdd.Location = new System.Drawing.Point(12, 12);
             this.dgvAdd.Name = "dgvAdd";
-            this.dgvAdd.Size = new System.Drawing.Size(546, 395);
+            this.dgvAdd.Size = new System.Drawing.Size(846, 395);
             this.dgvAdd.TabIndex = 0;
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(453, 413);
+            this.btnSave.Location = new System.Drawing.Point(753, 413);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(105, 41);
             this.btnSave.TabIndex = 1;
@@ -54,11 +54,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(570, 479);
+            this.ClientSize = new System.Drawing.Size(876, 479);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.dgvAdd);
             this.Name = "FrmSedanAgeCar";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "FrmSedanAgeCar";
+            this.Load += new System.EventHandler(this.FrmSedanAgeCar_Load);
+            this.Resize += new System.EventHandler(this.FrmSedanAgeCar_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAdd)).EndInit();
             this.ResumeLayout(false);
 
