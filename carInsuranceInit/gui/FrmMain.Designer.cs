@@ -56,19 +56,19 @@
             System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("อายุผู้ขับขี่");
             System.Windows.Forms.TreeNode treeNode16 = new System.Windows.Forms.TreeNode("กำหนดค่าโปรแกรม", new System.Windows.Forms.TreeNode[] {
             treeNode15});
-            this.treeView1 = new System.Windows.Forms.TreeView();
+            this.tv1 = new System.Windows.Forms.TreeView();
             this.SuspendLayout();
             // 
-            // treeView1
+            // tv1
             // 
-            this.treeView1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.treeView1.Location = new System.Drawing.Point(12, 12);
-            this.treeView1.Name = "treeView1";
+            this.tv1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.tv1.Location = new System.Drawing.Point(12, 12);
+            this.tv1.Name = "tv1";
             treeNode1.Name = "nSedanUseCar";
             treeNode1.Text = "ลักษณะการใช้รถ";
             treeNode2.Name = "nSedanEngineCC";
             treeNode2.Text = "ขนาดเครื่องยนต์";
-            treeNode3.Name = "Node15";
+            treeNode3.Name = "nSedanAgeDriver";
             treeNode3.Text = "อายุผู้ขับขี่";
             treeNode4.Name = "nSedanAgeCar";
             treeNode4.Text = "อายุรถ";
@@ -96,29 +96,31 @@
             treeNode15.Text = "อายุผู้ขับขี่";
             treeNode16.Name = "nInitConfig";
             treeNode16.Text = "กำหนดค่าโปรแกรม";
-            this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
+            this.tv1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode12,
             treeNode13,
             treeNode14,
             treeNode16});
-            this.treeView1.Size = new System.Drawing.Size(601, 441);
-            this.treeView1.TabIndex = 0;
+            this.tv1.Size = new System.Drawing.Size(601, 441);
+            this.tv1.TabIndex = 0;
+            this.tv1.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.tv1_NodeMouseDoubleClick);
             // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(625, 465);
-            this.Controls.Add(this.treeView1);
+            this.Controls.Add(this.tv1);
             this.Name = "FrmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmMain";
+            this.Load += new System.EventHandler(this.FrmMain_Load);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.TreeView treeView1;
+        private System.Windows.Forms.TreeView tv1;
     }
 }
