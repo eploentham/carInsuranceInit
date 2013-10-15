@@ -62,6 +62,7 @@ namespace carInsuranceInit.gui
             //dgvAdd.Columns[colAmount].HeaderText = "จำนวนเงิน";
             Font font = new Font("Microsoft Sans Serif", 12);
             dgvAdd.Columns[colSedanAgeDriverid].Visible = false;
+            dgvAdd.Columns[colRow].ReadOnly = true;
 
             dgvAdd.Font = font;
             if (dt.Rows.Count > 0)
@@ -125,9 +126,50 @@ namespace carInsuranceInit.gui
                 sad = getSedanAgeCar(i);
                 if (sad != null)
                 {
-                    cic.saveSedanAgeDriver(sad);
+                    if (cic.saveSedanAgeDriver(sad).Length >= 1)
+                    {
+                        MessageBox.Show("บันทึกข้อมูล เรียบร้อย", "บันทึกข้อมูล");
+                    }
                 }
 
+            }
+        }
+
+        private void dgvAdd_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            TextBox tb = e.Control as TextBox;
+            e.Control.KeyPress -= new KeyPressEventHandler(Column1_KeyPress);
+            if (dgvAdd.CurrentCell.ColumnIndex == colRateTInsur1) //Desired Column
+            {
+
+                if (tb != null)
+                {
+                    tb.KeyPress += new KeyPressEventHandler(Column1_KeyPress);
+                }
+            }
+            else if (dgvAdd.CurrentCell.ColumnIndex == colRateTInsur2) //Desired Column
+            {
+                //TextBox tb = e.Control as TextBox;
+                if (tb != null)
+                {
+                    tb.KeyPress += new KeyPressEventHandler(Column1_KeyPress);
+                }
+            }
+            else if (dgvAdd.CurrentCell.ColumnIndex == colRateTInsur3) //Desired Column
+            {
+                //TextBox tb = e.Control as TextBox;
+                if (tb != null)
+                {
+                    tb.KeyPress += new KeyPressEventHandler(Column1_KeyPress);
+                }
+            }
+        }
+        private void Column1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar)
+                && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
             }
         }
     }

@@ -56,6 +56,7 @@ namespace carInsuranceInit.gui
             //dgvAdd.Columns[colAmount].HeaderText = "จำนวนเงิน";
             Font font = new Font("Microsoft Sans Serif", 12);
             dgvAdd.Columns[colCatCarId].Visible = false;
+            dgvAdd.Columns[colRow].ReadOnly = true;
 
             dgvAdd.Font = font;
             if (dt.Rows.Count > 0)
@@ -118,9 +119,35 @@ namespace carInsuranceInit.gui
                 scc = getSedanCatCar(i);
                 if (scc != null)
                 {
-                    cic.saveSedanCatCat(scc);
+                    if (cic.saveSedanCatCat(scc).Length >= 1)
+                    {
+                        MessageBox.Show("บันทึกข้อมูล เรียบร้อย", "บันทึกข้อมูล");
+                    }
                 }
 
+            }
+        }
+
+        private void dgvAdd_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            TextBox tb = e.Control as TextBox;
+            e.Control.KeyPress -= new KeyPressEventHandler(Column1_KeyPress);
+            if (dgvAdd.CurrentCell.ColumnIndex == colCatRate) //Desired Column
+            {
+
+                if (tb != null)
+                {
+                    tb.KeyPress += new KeyPressEventHandler(Column1_KeyPress);
+                }
+            }
+            
+        }
+        private void Column1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar)
+                && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
             }
         }
     }

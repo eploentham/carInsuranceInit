@@ -51,6 +51,7 @@ namespace carInsuranceInit.objdb
             try
             {
                 chk = conn.ExecuteNonQuery(sql);
+                //chk = p.
             }
             catch (Exception ex)
             {

@@ -144,7 +144,10 @@ namespace carInsuranceInit.gui
         private void btnSave_Click(object sender, EventArgs e)
         {
             suc = getSedanUseCar();
-            cic.saveSedanUseCar(suc);
+            if (cic.saveSedanUseCar(suc).Length >= 1)
+            {
+                MessageBox.Show("บันทึกข้อมูล เรียบร้อย", "บันทึกข้อมูล");
+            }
             setControl();
         }
 

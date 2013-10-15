@@ -50,6 +50,7 @@
             this.dgvAdd.Name = "dgvAdd";
             this.dgvAdd.Size = new System.Drawing.Size(803, 395);
             this.dgvAdd.TabIndex = 4;
+            this.dgvAdd.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dgvAdd_EditingControlShowing);
             // 
             // FrmSedanInjuryAsset
             // 
