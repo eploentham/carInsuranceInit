@@ -15,6 +15,7 @@ namespace carInsuranceInit.objdb
         public SedanInjuryTimeDB(ConnectDB c)
         {
             conn = c;
+            initConfig();
         }
         private void initConfig()
         {
@@ -120,7 +121,7 @@ namespace carInsuranceInit.objdb
             }
             return chk;
         }
-        public String insertSedanAgeDriver(SedanInjuryTime p)
+        public String insertSedanInjuryTime(SedanInjuryTime p)
         {
             SedanInjuryTime item = new SedanInjuryTime();
             String chk = "";

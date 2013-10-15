@@ -1,4 +1,6 @@
-﻿using System;
+﻿using carInsuranceInit.control;
+using carInsuranceInit.object1;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,11 +14,14 @@ namespace carInsuranceInit.gui
 {
     public partial class FrmSedanInjuryAsset : Form
     {
-        int colRow = 0, colCapitalMin = 1, colRateTInsur1 = 2, colRateTInsur2 = 3, colRateTInsur3 = 4, colSedanCapitalId = 5;
+        private CarIControl cic;
+        SedanInjuryAsset sia;
+        int colRow = 0, colCapital = 1, colRateTInsur1 = 2, colRateTInsur2 = 3, colRateTInsur3 = 4, colSedanCapitalId = 5;
         int colCnt = 6;
         private void initConfig()
         {
-
+            cic = new CarIControl();
+            sia = new SedanInjuryAsset();
         }
         private void setResize()
         {
@@ -33,11 +38,12 @@ namespace carInsuranceInit.gui
         {
             DataTable dt = new DataTable();
             dgvAdd.ColumnCount = colCnt;
+            dt = cic.selectSedanInjuryAsset();
 
             dgvAdd.RowCount = dt.Rows.Count + 1;
             dgvAdd.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvAdd.Columns[colRow].Width = 50;
-            dgvAdd.Columns[colCapitalMin].Width = 130;
+            dgvAdd.Columns[colCapital].Width = 130;
             //dgvAdd.Columns[colCapitalMax].Width = 130;
             dgvAdd.Columns[colRateTInsur1].Width = 125;
             dgvAdd.Columns[colRateTInsur2].Width = 125;
@@ -46,7 +52,7 @@ namespace carInsuranceInit.gui
             //dgvAdd.Columns[colAmount].Width = 120;
 
             dgvAdd.Columns[colRow].HeaderText = "ลำดับ";
-            dgvAdd.Columns[colCapitalMin].HeaderText = "ทุนประกัน";
+            dgvAdd.Columns[colCapital].HeaderText = "บาดเจ็บ ทรัพย์สิน";
             //dgvAdd.Columns[colCapitalMax].HeaderText = "ทุนประกันขั้นสูง";
             dgvAdd.Columns[colRateTInsur1].HeaderText = "อัตรา ประเภท1";
             dgvAdd.Columns[colRateTInsur2].HeaderText = "อัตรา ประเภท2";
@@ -62,7 +68,13 @@ namespace carInsuranceInit.gui
             {
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
+                    dgvAdd[colRow, i].Value = (i + 1);
+                    dgvAdd[colSedanCapitalId, i].Value = dt.Rows[i][cic.siadb.sia.sedanInjuryAssetId].ToString();
 
+                    dgvAdd[colCapital, i].Value = dt.Rows[i][cic.siadb.sia.sedanInjuryAsset].ToString();
+                    dgvAdd[colRateTInsur1, i].Value = dt.Rows[i][cic.siadb.sia.RateTInsur1].ToString();
+                    dgvAdd[colRateTInsur2, i].Value = dt.Rows[i][cic.siadb.sia.RateTInsur2].ToString();
+                    dgvAdd[colRateTInsur3, i].Value = dt.Rows[i][cic.siadb.sia.RateTInsur3].ToString();
                     if ((i % 2) != 0)
                     {
                         dgvAdd.Rows[i].DefaultCellStyle.BackColor = Color.LightSalmon;
@@ -70,6 +82,29 @@ namespace carInsuranceInit.gui
                 }
             }
 
+        }
+        private SedanInjuryAsset getSedanInjuryAsset(int row)
+        {
+            sia = new SedanInjuryAsset();
+            if (dgvAdd[colRateTInsur1, row].Value == null)
+            {
+                return null;
+            }
+            sia.RateTInsur1 = dgvAdd[colRateTInsur1, row].Value.ToString();
+            sia.RateTInsur2 = dgvAdd[colRateTInsur2, row].Value.ToString();
+            sia.RateTInsur3 = dgvAdd[colRateTInsur3, row].Value.ToString();
+
+            sia.sedanInjuryAsset = dgvAdd[colCapital, row].Value.ToString();
+            if (dgvAdd[colSedanCapitalId, row].Value != null)
+            {
+                sia.sedanInjuryAssetId = dgvAdd[colSedanCapitalId, row].Value.ToString();
+            }
+            else
+            {
+                sia.sedanInjuryAssetId = "";
+            }
+
+            return sia;
         }
         private void FrmSedanInjuryAsset_Load(object sender, EventArgs e)
         {
@@ -79,6 +114,19 @@ namespace carInsuranceInit.gui
         private void FrmSedanInjuryAsset_Resize(object sender, EventArgs e)
         {
             setResize();
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < dgvAdd.RowCount; i++)
+            {
+                sia = getSedanInjuryAsset(i);
+                if (sia != null)
+                {
+                    cic.saveSedanInjuryAsset(sia);
+                }
+
+            }
         }
     }
 }

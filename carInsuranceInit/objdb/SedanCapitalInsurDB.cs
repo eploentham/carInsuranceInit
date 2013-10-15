@@ -122,7 +122,7 @@ namespace carInsuranceInit.objdb
             }
             return chk;
         }
-        public String insertSedanAgeDriver(SedanCapitalInsur p)
+        public String insertSedanCapitalInsur(SedanCapitalInsur p)
         {
             SedanCapitalInsur item = new SedanCapitalInsur();
             String chk = "";

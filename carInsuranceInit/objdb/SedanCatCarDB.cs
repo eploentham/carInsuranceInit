@@ -15,6 +15,7 @@ namespace carInsuranceInit.objdb
         public SedanCatCarDB(ConnectDB c)
         {
             conn = c;
+            initConfig();
         }
         private void initConfig()
         {
@@ -114,7 +115,7 @@ namespace carInsuranceInit.objdb
             }
             return chk;
         }
-        public String insertSedanAgeDriver(SedanCatCar p)
+        public String insertSedanCatCar(SedanCatCar p)
         {
             SedanCatCar item = new SedanCatCar();
             String chk = "";

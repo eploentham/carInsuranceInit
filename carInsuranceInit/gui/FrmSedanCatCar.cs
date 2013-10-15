@@ -1,4 +1,6 @@
-﻿using System;
+﻿using carInsuranceInit.control;
+using carInsuranceInit.object1;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,11 +14,14 @@ namespace carInsuranceInit.gui
 {
     public partial class FrmSedanCatCar : Form
     {
+        private CarIControl cic;
+        SedanCatCar scc;
         int colRow = 0, colCatCar = 1, colCatRate = 2, colCatCarId=3;
         int colCnt = 4;
         private void initConfig()
         {
-
+            cic = new CarIControl();
+            scc = new SedanCatCar();
         }
         private void setResize()
         {
@@ -33,6 +38,7 @@ namespace carInsuranceInit.gui
         {
             DataTable dt = new DataTable();
             dgvAdd.ColumnCount = colCnt;
+            dt = cic.selectSedanCatCar();
 
             dgvAdd.RowCount = dt.Rows.Count + 1;
             dgvAdd.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -56,7 +62,13 @@ namespace carInsuranceInit.gui
             {
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
+                    dgvAdd[colRow, i].Value = (i + 1);
+                    dgvAdd[colCatCarId, i].Value = dt.Rows[i][cic.sccdb.scc.sedanCatCarId].ToString();
 
+                    dgvAdd[colCatCar, i].Value = dt.Rows[i][cic.sccdb.scc.sedanCatCar].ToString();
+                    dgvAdd[colCatRate, i].Value = dt.Rows[i][cic.sccdb.scc.Rate].ToString();
+                    //dgvAdd[colRateTInsur2, i].Value = dt.Rows[i][cic.saddb.sad.RateTInsur2].ToString();
+                    //dgvAdd[colRateTInsur3, i].Value = dt.Rows[i][cic.saddb.sad.RateTInsur3].ToString();
                     if ((i % 2) != 0)
                     {
                         dgvAdd.Rows[i].DefaultCellStyle.BackColor = Color.LightSalmon;
@@ -64,6 +76,29 @@ namespace carInsuranceInit.gui
                 }
             }
 
+        }
+        private SedanCatCar getSedanCatCar(int row)
+        {
+            scc = new SedanCatCar();
+            if (dgvAdd[colCatCar, row].Value == null)
+            {
+                return null;
+            }
+            scc.Rate = dgvAdd[colCatRate, row].Value.ToString();
+            //scc. = dgvAdd[colRateTInsur2, row].Value.ToString();
+            //sad.RateTInsur3 = dgvAdd[colRateTInsur3, row].Value.ToString();
+
+            scc.sedanCatCar = dgvAdd[colCatCar, row].Value.ToString();
+            if (dgvAdd[colCatCarId, row].Value != null)
+            {
+                scc.sedanCatCarId = dgvAdd[colCatCarId, row].Value.ToString();
+            }
+            else
+            {
+                scc.sedanCatCarId = "";
+            }
+
+            return scc;
         }
 
         private void FrmSedanCatCar_Load(object sender, EventArgs e)
@@ -74,6 +109,19 @@ namespace carInsuranceInit.gui
         private void FrmSedanCatCar_Resize(object sender, EventArgs e)
         {
             setResize();
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < dgvAdd.RowCount; i++)
+            {
+                scc = getSedanCatCar(i);
+                if (scc != null)
+                {
+                    cic.saveSedanCatCat(scc);
+                }
+
+            }
         }
     }
 }

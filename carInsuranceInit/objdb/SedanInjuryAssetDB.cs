@@ -15,6 +15,7 @@ namespace carInsuranceInit.objdb
         public SedanInjuryAssetDB(ConnectDB c)
         {
             conn = c;
+            initConfig();
         }
         private void initConfig()
         {
@@ -25,9 +26,9 @@ namespace carInsuranceInit.objdb
             sia.sedanInjuryAsset = "sedan_injury_asset";
             sia.sedanInjuryAssetId = "sedan_injury_asset_id";
 
-            sia.table = "sedan_injury_time";
+            sia.table = "sedan_injury_asset";
             sia.sited = "";
-            sia.pkField = "sedan_injury_time_id";
+            sia.pkField = "sedan_injury_asset_id";
         }
         private SedanInjuryAsset setData(SedanInjuryAsset item, DataTable dt)
         {
@@ -120,7 +121,7 @@ namespace carInsuranceInit.objdb
             }
             return chk;
         }
-        public String insertSedanAgeDriver(SedanInjuryAsset p)
+        public String insertSedanInjuryAsset(SedanInjuryAsset p)
         {
             SedanInjuryAsset item = new SedanInjuryAsset();
             String chk = "";
