@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>carInsuranceInit</RootNamespace>
     <AssemblyName>carInsuranceInit</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -21,6 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -30,6 +32,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -128,12 +131,30 @@
     <Compile Include="objdb\DistrictDB.cs" />
     <Compile Include="objdb\ProvinceDB.cs" />
     <Compile Include="objdb\ReportDB.cs" />
+    <Compile Include="objdb\SedanAgeCarDB.cs" />
+    <Compile Include="objdb\SedanAgeDriverDB.cs" />
+    <Compile Include="objdb\SedanCapitalInsurDB.cs" />
+    <Compile Include="objdb\SedanCatCarDB.cs" />
+    <Compile Include="objdb\SedanEngineCCDB.cs" />
+    <Compile Include="objdb\SedanInjuryAssetDB.cs" />
+    <Compile Include="objdb\SedanInjuryPersonDB.cs" />
+    <Compile Include="objdb\SedanInjuryTimeDB.cs" />
+    <Compile Include="objdb\SedanUseCarDB.cs" />
     <Compile Include="object1\Amphur.cs" />
     <Compile Include="object1\ComboBoxItem.cs" />
     <Compile Include="object1\Config1.cs" />
     <Compile Include="object1\District.cs" />
     <Compile Include="object1\Persistent.cs" />
     <Compile Include="object1\Province.cs" />
+    <Compile Include="object1\SedanAgeCar.cs" />
+    <Compile Include="object1\SedanAgeDriver.cs" />
+    <Compile Include="object1\SedanCapitalInsur.cs" />
+    <Compile Include="object1\SedanCatCar.cs" />
+    <Compile Include="object1\SedanEngineCC.cs" />
+    <Compile Include="object1\SedanInjuryAsset.cs" />
+    <Compile Include="object1\SedanInjuryPerson.cs" />
+    <Compile Include="object1\SedanInjuryTime.cs" />
+    <Compile Include="object1\SedanUseCar.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">

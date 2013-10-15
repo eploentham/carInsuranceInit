@@ -30,8 +30,16 @@ namespace carInsuranceInit.objdb
             _mainConnection = new OleDbConnection();
             //_mainConnection.ConnectionString = GetConfig("Main.ConnectionString");
             //_mainConnection.ConnectionString = "Provider=Microsoft.Jet.OLEDB.4.0; Data Source=" + Environment.CurrentDirectory + "\\DataBase\\dsg.mdb;Persist Security Info=False";
+            if (Environment.Is64BitOperatingSystem)
+            {
+                _mainConnection.ConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0; Data Source=D:\\source\\github\\carInsuranceInit\\carInsuranceInit\\DataBase\\carInsuranceInit.mdb;Persist Security Info=False";
+            }
+            else
+            {
+                _mainConnection.ConnectionString = "Provider=Microsoft.Jet.OLEDB.4.0; Data Source=D:\\source\\github\\carInsuranceInit\\carInsuranceInit\\DataBase\\carInsuranceInit.mdb;Persist Security Info=False";
+            }
             
-            _mainConnection.ConnectionString = "Provider=Microsoft.Jet.OLEDB.4.0; Data Source=D:\\source\\dsg\\DSGInvoice\\DSGInvoice\\DataBase\\dsg.mdb;Persist Security Info=False";
+            
             _isDisposed = false;
         }
         public ConnectDB(String hostName)

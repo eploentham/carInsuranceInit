@@ -12,8 +12,8 @@ namespace carInsuranceInit.gui
 {
     public partial class FrmSedanInjuryTime : Form
     {
-        int colRow = 0, colCapitalMin = 1, colCapitalMax = 2, colRateTInsur1 = 3, colRateTInsur2 = 4, colRateTInsur3 = 5, colSedanCapitalId = 6;
-        int colCnt = 7;
+        int colRow = 0, colCapital = 1, colRateTInsur1 = 2, colRateTInsur2 = 3, colRateTInsur3 = 4, colSedanCapitalId = 5;
+        int colCnt = 6;
         private void initConfig()
         {
 
@@ -37,8 +37,8 @@ namespace carInsuranceInit.gui
             dgvAdd.RowCount = dt.Rows.Count + 1;
             dgvAdd.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvAdd.Columns[colRow].Width = 50;
-            dgvAdd.Columns[colCapitalMin].Width = 130;
-            dgvAdd.Columns[colCapitalMax].Width = 130;
+            dgvAdd.Columns[colCapital].Width = 130;
+            //dgvAdd.Columns[colCapitalMax].Width = 130;
             dgvAdd.Columns[colRateTInsur1].Width = 125;
             dgvAdd.Columns[colRateTInsur2].Width = 125;
             dgvAdd.Columns[colRateTInsur3].Width = 125;
@@ -46,8 +46,8 @@ namespace carInsuranceInit.gui
             //dgvAdd.Columns[colAmount].Width = 120;
 
             dgvAdd.Columns[colRow].HeaderText = "ลำดับ";
-            dgvAdd.Columns[colCapitalMin].HeaderText = "ทุนประกันขั้นต่ำ";
-            dgvAdd.Columns[colCapitalMax].HeaderText = "ทุนประกันขั้นสูง";
+            dgvAdd.Columns[colCapital].HeaderText = "ทุนประกัน";
+            //dgvAdd.Columns[colCapitalMax].HeaderText = "ทุนประกันขั้นสูง";
             dgvAdd.Columns[colRateTInsur1].HeaderText = "อัตรา ประเภท1";
             dgvAdd.Columns[colRateTInsur2].HeaderText = "อัตรา ประเภท2";
             dgvAdd.Columns[colRateTInsur3].HeaderText = "อัตรา ประเภท3";

@@ -142,7 +142,9 @@
             this.txtCCMaxTInsur3.Name = "txtCCMaxTInsur3";
             this.txtCCMaxTInsur3.Size = new System.Drawing.Size(100, 29);
             this.txtCCMaxTInsur3.TabIndex = 11;
+            this.txtCCMaxTInsur3.Enter += new System.EventHandler(this.txtCCMaxTInsur3_Enter);
             this.txtCCMaxTInsur3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCCMaxTInsur3_KeyPress);
+            this.txtCCMaxTInsur3.Leave += new System.EventHandler(this.txtCCMaxTInsur3_Leave);
             // 
             // txtCCMinTInsur3
             // 
@@ -151,7 +153,9 @@
             this.txtCCMinTInsur3.Name = "txtCCMinTInsur3";
             this.txtCCMinTInsur3.Size = new System.Drawing.Size(100, 29);
             this.txtCCMinTInsur3.TabIndex = 10;
+            this.txtCCMinTInsur3.Enter += new System.EventHandler(this.txtCCMinTInsur3_Enter);
             this.txtCCMinTInsur3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCCMinTInsur3_KeyPress);
+            this.txtCCMinTInsur3.Leave += new System.EventHandler(this.txtCCMinTInsur3_Leave);
             // 
             // txtCCMaxTInsur2
             // 
@@ -160,7 +164,9 @@
             this.txtCCMaxTInsur2.Name = "txtCCMaxTInsur2";
             this.txtCCMaxTInsur2.Size = new System.Drawing.Size(100, 29);
             this.txtCCMaxTInsur2.TabIndex = 9;
+            this.txtCCMaxTInsur2.Enter += new System.EventHandler(this.txtCCMaxTInsur2_Enter);
             this.txtCCMaxTInsur2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCCMaxTInsur2_KeyPress);
+            this.txtCCMaxTInsur2.Leave += new System.EventHandler(this.txtCCMaxTInsur2_Leave);
             // 
             // txtCCMinTInsur2
             // 
@@ -169,7 +175,9 @@
             this.txtCCMinTInsur2.Name = "txtCCMinTInsur2";
             this.txtCCMinTInsur2.Size = new System.Drawing.Size(100, 29);
             this.txtCCMinTInsur2.TabIndex = 8;
+            this.txtCCMinTInsur2.Enter += new System.EventHandler(this.txtCCMinTInsur2_Enter);
             this.txtCCMinTInsur2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCCMinTInsur2_KeyPress);
+            this.txtCCMinTInsur2.Leave += new System.EventHandler(this.txtCCMinTInsur2_Leave);
             // 
             // label5
             // 
@@ -228,7 +236,9 @@
             this.txtCCMaxTInsur1.Name = "txtCCMaxTInsur1";
             this.txtCCMaxTInsur1.Size = new System.Drawing.Size(100, 29);
             this.txtCCMaxTInsur1.TabIndex = 1;
+            this.txtCCMaxTInsur1.Enter += new System.EventHandler(this.txtCCMaxTInsur1_Enter);
             this.txtCCMaxTInsur1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCCMaxTInsur1_KeyPress);
+            this.txtCCMaxTInsur1.Leave += new System.EventHandler(this.txtCCMaxTInsur1_Leave);
             // 
             // txtCCMinTInsur1
             // 
@@ -237,7 +247,9 @@
             this.txtCCMinTInsur1.Name = "txtCCMinTInsur1";
             this.txtCCMinTInsur1.Size = new System.Drawing.Size(100, 29);
             this.txtCCMinTInsur1.TabIndex = 0;
+            this.txtCCMinTInsur1.Enter += new System.EventHandler(this.txtCCMinTInsur1_Enter);
             this.txtCCMinTInsur1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCCMinTInsur1_KeyPress);
+            this.txtCCMinTInsur1.Leave += new System.EventHandler(this.txtCCMinTInsur1_Leave);
             // 
             // btnSave
             // 
@@ -249,6 +261,7 @@
             this.btnSave.Text = "Save";
             this.btnSave.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // FrmSedanEngineCC
             // 
@@ -260,6 +273,7 @@
             this.Name = "FrmSedanEngineCC";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmSedanEngineCC";
+            this.Load += new System.EventHandler(this.FrmSedanEngineCC_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
