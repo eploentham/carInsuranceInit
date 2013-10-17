@@ -1,6 +1,6 @@
 ﻿namespace carInsuranceInit.gui
 {
-    partial class FrmSedanRY02
+    partial class FrmSedanPa
     {
         /// <summary>
         /// Required designer variable.
@@ -35,31 +35,35 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(453, 413);
+            this.btnSave.Location = new System.Drawing.Point(753, 413);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(105, 41);
-            this.btnSave.TabIndex = 5;
+            this.btnSave.TabIndex = 3;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // dgvAdd
             // 
             this.dgvAdd.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAdd.Location = new System.Drawing.Point(12, 12);
             this.dgvAdd.Name = "dgvAdd";
-            this.dgvAdd.Size = new System.Drawing.Size(546, 395);
-            this.dgvAdd.TabIndex = 4;
+            this.dgvAdd.Size = new System.Drawing.Size(846, 395);
+            this.dgvAdd.TabIndex = 2;
+            this.dgvAdd.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dgvAdd_EditingControlShowing);
             // 
-            // FrmSedanRY02
+            // FrmSedanPa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(574, 467);
+            this.ClientSize = new System.Drawing.Size(878, 478);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.dgvAdd);
-            this.Name = "FrmSedanRY02";
+            this.Name = "FrmSedanPa";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FrmRY02";
+            this.Text = "FrmSedanPa";
+            this.Load += new System.EventHandler(this.FrmSedanPa_Load);
+            this.Resize += new System.EventHandler(this.FrmSedanPa_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAdd)).EndInit();
             this.ResumeLayout(false);
 

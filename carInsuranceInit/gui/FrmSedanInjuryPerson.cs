@@ -119,6 +119,7 @@ namespace carInsuranceInit.gui
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            Boolean chk = false;
             for (int i = 0; i < dgvAdd.RowCount; i++)
             {
                 sip = getSedanInjuryPerson(i);
@@ -126,10 +127,19 @@ namespace carInsuranceInit.gui
                 {
                     if (cic.saveSedanInjuryPerson(sip).Length >= 1)
                     {
-                        MessageBox.Show("บันทึกข้อมูล เรียบร้อย", "บันทึกข้อมูล");
+                        chk = true;
+                    }
+                    else
+                    {
+                        chk = false;
+                        MessageBox.Show("ไม่สามารถ บันทึกข้อมูลได้", "Error");
                     }
                 }
-
+            }
+            if (chk)
+            {
+                MessageBox.Show("บันทึกข้อมูล เรียบร้อย", "บันทึกข้อมูล");
+                setData();
             }
         }
 
@@ -167,7 +177,10 @@ namespace carInsuranceInit.gui
             if (!char.IsControl(e.KeyChar)
                 && !char.IsDigit(e.KeyChar))
             {
-                e.Handled = true;
+                if (e.KeyChar != '.')
+                {
+                    e.Handled = true;
+                }
             }
         }
     }

@@ -5,14 +5,13 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace carInsuranceInit.gui
 {
-    public partial class FrmSedanRY01 : Form
+    public partial class FrmSedanModelAdd : Form
     {
-        public FrmSedanRY01()
+        public FrmSedanModelAdd()
         {
             InitializeComponent();
         }

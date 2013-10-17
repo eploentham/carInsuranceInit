@@ -6,11 +6,15 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace carInsuranceInit.control
 {
     class CarIControl
     {
+        String pathFileSedan =System.Environment.CurrentDirectory + "\\asset\\110\\";
+        String pathFilePickUp210 = System.Environment.CurrentDirectory + "\\asset\\210\\";
+        String pathFilePickUp320 = System.Environment.CurrentDirectory + "\\asset\\320\\";
         ConnectDB conn;
         public SedanUseCarDB sucdb;
         public SedanEngineCCDB secdb;
@@ -21,6 +25,9 @@ namespace carInsuranceInit.control
         public SedanInjuryPersonDB sipdb;
         public SedanInjuryTimeDB sitdb;
         public SedanInjuryAssetDB siadb;
+        public BrandDB branddb;
+        public SedanPaDB spadb;
+        public SedanMeDB smedb;
 
         SedanUseCar suc;
         SedanEngineCC sec;
@@ -31,6 +38,11 @@ namespace carInsuranceInit.control
         SedanInjuryPerson sip;
         SedanInjuryTime sit;
         SedanInjuryAsset sia;
+        Brand brand;
+        SedanPa spa;
+        SedanMe sme;
+
+        WriteText wt;
 
         public CarIControl()
         {
@@ -39,6 +51,7 @@ namespace carInsuranceInit.control
         private void initConfig()
         {
             conn = new ConnectDB();
+            wt = new WriteText();
 
             suc = new SedanUseCar();
             sec = new SedanEngineCC();
@@ -51,6 +64,11 @@ namespace carInsuranceInit.control
             sit = new SedanInjuryTime();
             sia = new SedanInjuryAsset();
 
+            brand = new Brand();
+
+            spa = new SedanPa();
+            sme = new SedanMe();
+
             sucdb = new SedanUseCarDB(conn);
             secdb = new SedanEngineCCDB(conn);
             sacdb = new SedanAgeCarDB(conn);
@@ -61,6 +79,11 @@ namespace carInsuranceInit.control
             sipdb = new SedanInjuryPersonDB(conn);
             sitdb = new SedanInjuryTimeDB(conn);
             siadb = new SedanInjuryAssetDB(conn);
+
+            branddb = new BrandDB(conn);
+
+            spadb = new SedanPaDB(conn);
+            smedb = new SedanMeDB(conn);
         }
         public SedanUseCar selectSedanUsecar()
         {
@@ -105,6 +128,21 @@ namespace carInsuranceInit.control
         public DataTable selectSedanInjuryAsset()
         {
             DataTable dt = siadb.selectAll();
+            return dt;
+        }
+        public DataTable selectBrand()
+        {
+            DataTable dt = branddb.selectAll();
+            return dt;
+        }
+        public DataTable selectSedanMe()
+        {
+            DataTable dt = smedb.selectAll();
+            return dt;
+        }
+        public DataTable selectSedanPa()
+        {
+            DataTable dt = spadb.selectAll();
             return dt;
         }
 
@@ -162,5 +200,240 @@ namespace carInsuranceInit.control
             chk = siadb.insertSedanInjuryAsset(p);
             return chk;
         }
+        public String saveBrand(Brand p)
+        {
+            String chk = "";
+            chk = branddb.insertBrand(p);
+            return chk;
+        }
+        public String saveSedanPa(SedanPa p)
+        {
+            String chk = "";
+            chk = spadb.insertSedanInjuryTime(p);
+            return chk;
+        }
+        public String saveSedanMe(SedanMe p)
+        {
+            String chk = "";
+            chk = smedb.insertSedanInjuryTime(p);
+            return chk;
+        }
+        public String writeSedanAgeCar()
+        {
+            String data="",chk="";
+            DataTable dt;
+            dt = sacdb.selectAll();
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                data += dt.Rows[i][sacdb.sac.sedanAgeCar].ToString().Trim() + "\t" + dt.Rows[i][sacdb.sac.RateTInsur1].ToString().Trim() + "\t" + dt.Rows[i][sacdb.sac.RateTInsur2].ToString().Trim() + "\t" + dt.Rows[i][sacdb.sac.RateTInsur3].ToString().Trim() + Environment.NewLine;
+            }
+            //pathFileSedan = setPathFile(pathFileSedan);
+            if (wt.writeTxt(pathFileSedan,"CarAge.txt", data))
+            {
+                chk = "จำนวนข้อมูล อายุรถเก๋งทั้งหมด "+dt.Rows.Count+" รายการ ";
+                //MessageBox.Show("", "เขียน Text File  เรียบร้อย");
+            }
+            return chk;
+        }
+        public String writeSedanAgeDriver()
+        {
+            String data = "", chk="";
+            DataTable dt;
+            dt = saddb.selectAll();
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                data += dt.Rows[i][saddb.sad.sedanAgeDriver].ToString().Trim() + "\t" + dt.Rows[i][saddb.sad.RateTInsur1].ToString().Trim() + "\t" + dt.Rows[i][saddb.sad.RateTInsur2].ToString().Trim() + "\t" + dt.Rows[i][saddb.sad.RateTInsur3].ToString().Trim() + Environment.NewLine;
+            }
+            //pathFileSedan = setPathFile(pathFileSedan);
+            if (wt.writeTxt(pathFileSedan , "DriverAge.txt", data))
+            {
+                chk = "จำนวนข้อมูล อายุผู้ขับขี่ทั้งหมด " + dt.Rows.Count + " รายการ ";
+                //MessageBox.Show("", "เขียน Text File  เรียบร้อย");
+            }
+            return chk;
+        }
+        public String writeSedanCapitalInsur()
+        {
+            String data = "", chk="";
+            DataTable dt;
+            dt = scidb.selectAll();
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                data += dt.Rows[i][scidb.sci.sedanCapitalInsur].ToString().Trim() + "\t" + dt.Rows[i][scidb.sci.RateTInsur1].ToString().Trim() + "\t" + dt.Rows[i][scidb.sci.RateTInsur2].ToString().Trim() + "\t" + dt.Rows[i][scidb.sci.RateTInsur3].ToString().Trim() + Environment.NewLine;
+            }
+            //pathFileSedan = setPathFile(pathFileSedan);
+            if (wt.writeTxt(pathFileSedan , "CarInsur.txt", data))
+            {
+                chk = "จำนวนข้อมูล ทุนประกันทั้งหมด " + dt.Rows.Count + " รายการ ";
+                //MessageBox.Show("", "เขียน Text File  เรียบร้อย");
+            }
+            return chk;
+        }
+        public String writeSedanCatCar()
+        {
+            String data = "", chk="";
+            DataTable dt;
+            dt = sccdb.selectAll();
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                data += dt.Rows[i][sccdb.scc.sedanCatCar].ToString().Trim() + "\t" + dt.Rows[i][sccdb.scc.Rate].ToString().Trim() + Environment.NewLine;
+            }
+            //pathFileSedan = setPathFile(pathFileSedan);
+            if (wt.writeTxt(pathFileSedan , "groupCar.txt", data))
+            {
+                chk = "จำนวนข้อมูล กลุ่มรถเก่งทั้งหมด " + dt.Rows.Count + " รายการ ";
+                //MessageBox.Show("", "เขียน Text File  เรียบร้อย");
+            }
+            return chk;
+        }
+        public String writeSedanEngineCC()
+        {
+            String data = "", chk="";
+            SedanEngineCC sec;
+            sec = secdb.selectAll();
+            data = "2000" + sec.sedanEngine2000CCMinTInsur1 + "\t" + sec.sedanEngine2000CCMinTInsur2 + "\t" + sec.sedanEngine2000CCMinTInsur3;
+            data += "2001" + sec.sedanEngine2000CCMaxTInsur1 + "\t" + sec.sedanEngine2000CCMaxTInsur2 + "\t" + sec.sedanEngine2000CCMaxTInsur3;
+            //pathFileSedan = setPathFile(pathFileSedan);
+            if (wt.writeTxt(pathFileSedan , "MotorCar.txt", data))
+            {
+                chk = "เขียน Text File SedanEngineCC เรียบร้อย";
+                //MessageBox.Show("", "เขียน Text File  เรียบร้อย");
+            }
+            return chk;
+        }
+        public String writeSedanUseCar()
+        {
+            String data = "", chk="";
+            SedanUseCar suc;
+            suc = sucdb.selectAll();
+            data = "110\t" + suc.sedanUseCar110TInsur1 + "\t" + suc.sedanUseCar110TInsur2 + "\t" + suc.sedanUseCar110TInsur3;
+            data += "210\t" + suc.sedanUseCar110TInsur1 + "\t" + suc.sedanUseCar110TInsur2 + "\t" + suc.sedanUseCar110TInsur3;
+            //pathFileSedan = setPathFile(pathFileSedan);
+            if (wt.writeTxt(pathFileSedan , "\\ModeCar.txt", data))
+            {
+                chk = "เขียน Text File SedanUseCar เรียบร้อย";
+                //MessageBox.Show("", "เขียน Text File  เรียบร้อย");
+            }
+            return chk;
+        }
+        public String writeSedanInjuryAsset()
+        {
+            String data = "", chk="";
+            DataTable dt;
+            dt = siadb.selectAll();
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                data += dt.Rows[i][siadb.sia.sedanInjuryAsset].ToString().Trim() + "\t" + dt.Rows[i][siadb.sia.RateTInsur1].ToString().Trim() + "\t" + dt.Rows[i][siadb.sia.RateTInsur2].ToString().Trim() + "\t" + dt.Rows[i][siadb.sia.RateTInsur3].ToString().Trim() + Environment.NewLine;
+            }
+            //pathFileSedan = setPathFile(pathFileSedan);
+            if (wt.writeTxt(pathFileSedan , "damageproperty.txt", data))
+            {
+                chk = "จำนวนข้อมูล บาดเจ็บต่อทรัพย์สิน ทั้งหมด " + dt.Rows.Count + " รายการ ";
+                //MessageBox.Show("", "เขียน Text File  เรียบร้อย");
+            }
+            return chk;
+        }
+        public String writeSedanInjuryPerson()
+        {
+            String data = "", chk="";
+            DataTable dt;
+            dt = sipdb.selectAll();
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                data += dt.Rows[i][sipdb.sip.sedanInjuryPerson].ToString().Trim() + "\t" + dt.Rows[i][sipdb.sip.RateTInsur2].ToString().Trim() + "\t" + dt.Rows[i][sipdb.sip.RateTInsur3].ToString().Trim() + Environment.NewLine;
+            }
+            //pathFileSedan = setPathFile(pathFileSedan);
+            if (wt.writeTxt(pathFileSedan , "damageperson.txt", data))
+            {
+                chk = "จำนวนข้อมูล บาดเจ็บต่อบุคคล ทั้งหมด " + dt.Rows.Count + " รายการ ";
+                //MessageBox.Show("", "เขียน Text File  เรียบร้อย");
+            }
+            return chk;
+        }
+        public String writeSedanInjuryTime()
+        {
+            String data = "", chk="";
+            DataTable dt;
+            dt = sitdb.selectAll();
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                data += dt.Rows[i][sitdb.sit.sedanInjuryTime].ToString().Trim() + "\t" + dt.Rows[i][sitdb.sit.RateTInsur1].ToString().Trim() + "\t" + dt.Rows[i][sitdb.sit.RateTInsur2].ToString().Trim() + "\t" + dt.Rows[i][sitdb.sit.RateTInsur3].ToString().Trim() + Environment.NewLine;
+            }
+            //pathFileSedan = setPathFile(pathFileSedan);
+            if (wt.writeTxt(pathFileSedan , "damageacient.txt", data))
+            {
+                chk = "จำนวนข้อมูล บาดเจ็บต่อครั้ง ทั้งหมด " + dt.Rows.Count + " รายการ ";
+                //MessageBox.Show("", "เขียน Text File  เรียบร้อย");
+            }
+            return chk;
+        }
+        public String writeBrand()
+        {
+            String data = "", chk = "";
+            DataTable dt;
+            dt = sccdb.selectAll();
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                data += dt.Rows[i][sccdb.scc.sedanCatCar].ToString().Trim() + "\t" + dt.Rows[i][sccdb.scc.Rate].ToString().Trim() + Environment.NewLine;
+            }
+            //pathFileSedan = setPathFile(pathFileSedan);
+            if (wt.writeTxt(pathFileSedan, "CarBrand.txt", data))
+            {
+                chk = "จำนวนข้อมูล ME " + dt.Rows.Count + " รายการ ";
+                //MessageBox.Show("", "เขียน Text File  เรียบร้อย");
+            }
+            return chk;
+        }
+        public String writeSedanPa()
+        {
+            String data = "", chk = "";
+            DataTable dt;
+            dt = spadb.selectAll();
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                data += dt.Rows[i][spadb.spa.sedanPa].ToString().Trim() + "\t" + dt.Rows[i][spadb.spa.RateTInsur1].ToString().Trim() + "\t" + dt.Rows[i][spadb.spa.RateTInsur2].ToString().Trim() + "\t" + dt.Rows[i][spadb.spa.RateTInsur3].ToString().Trim() + Environment.NewLine;
+            }
+            //pathFileSedan = setPathFile(pathFileSedan);
+            if (wt.writeTxt(pathFileSedan, "pa.txt", data))
+            {
+                chk = "จำนวนข้อมูล PA เรียบร้อย ";
+                //MessageBox.Show("", "เขียน Text File  เรียบร้อย");
+            }
+            return chk;
+        }
+        public String writeSedanMe()
+        {
+            String data = "", chk = "";
+            DataTable dt;
+            dt = smedb.selectAll();
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                data += dt.Rows[i][smedb.sme.sedanMe].ToString().Trim() + "\t" + dt.Rows[i][smedb.sme.RateTInsur1].ToString().Trim() + "\t" + dt.Rows[i][smedb.sme.RateTInsur2].ToString().Trim() + "\t" + dt.Rows[i][smedb.sme.RateTInsur3].ToString().Trim() + Environment.NewLine;
+            }
+            //pathFileSedan = setPathFile(pathFileSedan);
+            if (wt.writeTxt(pathFileSedan, "me.txt", data))
+            {
+                chk = "จำนวนข้อมูล ME เรียบร้อย ";
+                //MessageBox.Show("", "เขียน Text File  เรียบร้อย");
+            }
+            return chk;
+        }
+        //private String setPathFile(String tInsur)
+        //{
+        //    String path = "";
+        //    if (tInsur.Equals("1"))
+        //    {
+        //        path = pathFileSedan + "\\110\\";
+        //    }
+        //    else if (tInsur.Equals("2"))
+        //    {
+        //        path = pathFileSedan + "\\210\\";
+        //    }
+        //    else if (tInsur.Equals("3"))
+        //    {
+        //        path = pathFileSedan + "\\320\\";
+        //    }
+        //    return path;
+        //}
     }
 }

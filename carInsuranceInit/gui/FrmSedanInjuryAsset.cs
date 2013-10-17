@@ -43,7 +43,7 @@ namespace carInsuranceInit.gui
             dgvAdd.RowCount = dt.Rows.Count + 1;
             dgvAdd.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvAdd.Columns[colRow].Width = 50;
-            dgvAdd.Columns[colCapital].Width = 130;
+            dgvAdd.Columns[colCapital].Width = 140;
             //dgvAdd.Columns[colCapitalMax].Width = 130;
             dgvAdd.Columns[colRateTInsur1].Width = 125;
             dgvAdd.Columns[colRateTInsur2].Width = 125;
@@ -119,6 +119,7 @@ namespace carInsuranceInit.gui
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            Boolean chk = false;
             for (int i = 0; i < dgvAdd.RowCount; i++)
             {
                 sia = getSedanInjuryAsset(i);
@@ -126,10 +127,19 @@ namespace carInsuranceInit.gui
                 {
                     if (cic.saveSedanInjuryAsset(sia).Length >= 1)
                     {
-                        MessageBox.Show("บันทึกข้อมูล เรียบร้อย", "บันทึกข้อมูล");
+                        chk = true;
+                    }
+                    else
+                    {
+                        chk = false;
+                        MessageBox.Show("ไม่สามารถ บันทึกข้อมูลได้", "Error");
                     }
                 }
-
+            }
+            if (chk)
+            {
+                MessageBox.Show("บันทึกข้อมูล เรียบร้อย", "บันทึกข้อมูล");
+                setData();
             }
         }
 
@@ -167,7 +177,10 @@ namespace carInsuranceInit.gui
             if (!char.IsControl(e.KeyChar)
                 && !char.IsDigit(e.KeyChar))
             {
-                e.Handled = true;
+                if (e.KeyChar != '.')
+                {
+                    e.Handled = true;
+                }
             }
         }
     }

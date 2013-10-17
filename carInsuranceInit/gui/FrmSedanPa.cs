@@ -7,28 +7,27 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace carInsuranceInit.gui
 {
-    public partial class FrmSedanAgeDriver : Form
+    public partial class FrmSedanPa : Form
     {
         private CarIControl cic;
-        SedanAgeDriver sad;
-        int colRow = 0, colAgeDriver = 1, colRateTInsur1 = 2, colRateTInsur2 = 3, colRateTInsur3 = 4, colSedanAgeDriverid = 5;
+        SedanPa spa;
+        int colRow = 0, colCapital = 1, colRateTInsur1 = 2, colRateTInsur2 = 3, colRateTInsur3 = 4, colSedanCapitalId = 5;
         int colCnt = 6;
         private void initConfig()
         {
             cic = new CarIControl();
-            sad = new SedanAgeDriver();
+            spa = new SedanPa();
         }
         private void setResize()
         {
             dgvAdd.Width = this.Width - 50;
             dgvAdd.Height = this.Height - 150;
         }
-        public FrmSedanAgeDriver()
+        public FrmSedanPa()
         {
             InitializeComponent();
             initConfig();
@@ -38,30 +37,30 @@ namespace carInsuranceInit.gui
         {
             DataTable dt = new DataTable();
             dgvAdd.ColumnCount = colCnt;
-            dt = cic.selectSedanAgeDriver();
+            dt = cic.selectSedanPa();
 
             dgvAdd.RowCount = dt.Rows.Count + 1;
             dgvAdd.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvAdd.Columns[colRow].Width = 50;
-            dgvAdd.Columns[colAgeDriver].Width = 125;
-            //dgvAdd.Columns[colAgeDriverMax].Width = 125;
-            dgvAdd.Columns[colRateTInsur1].Width = 150;
-            dgvAdd.Columns[colRateTInsur2].Width = 150;
-            dgvAdd.Columns[colRateTInsur3].Width = 150;
-            dgvAdd.Columns[colSedanAgeDriverid].Width = 120;
+            dgvAdd.Columns[colCapital].Width = 130;
+            //dgvAdd.Columns[colCapitalMax].Width = 130;
+            dgvAdd.Columns[colRateTInsur1].Width = 125;
+            dgvAdd.Columns[colRateTInsur2].Width = 125;
+            dgvAdd.Columns[colRateTInsur3].Width = 125;
+            dgvAdd.Columns[colSedanCapitalId].Width = 120;
             //dgvAdd.Columns[colAmount].Width = 120;
 
             dgvAdd.Columns[colRow].HeaderText = "ลำดับ";
-            dgvAdd.Columns[colAgeDriver].HeaderText = "อายุผู้ขับขี่";
-            //dgvAdd.Columns[colAgeDriverMax].HeaderText = "อายุผู้ขับขี่ขั้นสูง";
+            dgvAdd.Columns[colCapital].HeaderText = "บาดเจ็บ ครั้ง";
+            //dgvAdd.Columns[colCapitalMax].HeaderText = "ทุนประกันขั้นสูง";
             dgvAdd.Columns[colRateTInsur1].HeaderText = "อัตรา ประเภท1";
             dgvAdd.Columns[colRateTInsur2].HeaderText = "อัตรา ประเภท2";
             dgvAdd.Columns[colRateTInsur3].HeaderText = "อัตรา ประเภท3";
 
-            dgvAdd.Columns[colSedanAgeDriverid].HeaderText = "sedanagedriverid";
+            dgvAdd.Columns[colSedanCapitalId].HeaderText = "sedanagedriverid";
             //dgvAdd.Columns[colAmount].HeaderText = "จำนวนเงิน";
             Font font = new Font("Microsoft Sans Serif", 12);
-            dgvAdd.Columns[colSedanAgeDriverid].Visible = false;
+            dgvAdd.Columns[colSedanCapitalId].Visible = false;
             dgvAdd.Columns[colRow].ReadOnly = true;
 
             dgvAdd.Font = font;
@@ -70,12 +69,12 @@ namespace carInsuranceInit.gui
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
                     dgvAdd[colRow, i].Value = (i + 1);
-                    dgvAdd[colSedanAgeDriverid, i].Value = dt.Rows[i][cic.saddb.sad.sedanAgeDriver].ToString();
+                    dgvAdd[colSedanCapitalId, i].Value = dt.Rows[i][cic.spadb.spa.sedanPaId].ToString();
 
-                    dgvAdd[colAgeDriver, i].Value = dt.Rows[i][cic.saddb.sad.sedanAgeDriver].ToString();
-                    dgvAdd[colRateTInsur1, i].Value = dt.Rows[i][cic.saddb.sad.RateTInsur1].ToString();
-                    dgvAdd[colRateTInsur2, i].Value = dt.Rows[i][cic.saddb.sad.RateTInsur2].ToString();
-                    dgvAdd[colRateTInsur3, i].Value = dt.Rows[i][cic.saddb.sad.RateTInsur3].ToString();
+                    dgvAdd[colCapital, i].Value = dt.Rows[i][cic.spadb.spa.sedanPa].ToString();
+                    dgvAdd[colRateTInsur1, i].Value = dt.Rows[i][cic.spadb.spa.RateTInsur1].ToString();
+                    dgvAdd[colRateTInsur2, i].Value = dt.Rows[i][cic.spadb.spa.RateTInsur2].ToString();
+                    dgvAdd[colRateTInsur3, i].Value = dt.Rows[i][cic.spadb.spa.RateTInsur3].ToString();
                     if ((i % 2) != 0)
                     {
                         dgvAdd.Rows[i].DefaultCellStyle.BackColor = Color.LightSalmon;
@@ -84,37 +83,36 @@ namespace carInsuranceInit.gui
             }
 
         }
-        
-        private SedanAgeDriver getSedanAgeCar(int row)
+        private SedanPa getSedanPa(int row)
         {
-            sad = new SedanAgeDriver();
+            spa = new SedanPa();
             if (dgvAdd[colRateTInsur1, row].Value == null)
             {
                 return null;
             }
-            sad.RateTInsur1 = dgvAdd[colRateTInsur1, row].Value.ToString();
-            sad.RateTInsur2 = dgvAdd[colRateTInsur2, row].Value.ToString();
-            sad.RateTInsur3 = dgvAdd[colRateTInsur3, row].Value.ToString();
+            spa.RateTInsur1 = dgvAdd[colRateTInsur1, row].Value.ToString();
+            spa.RateTInsur2 = dgvAdd[colRateTInsur2, row].Value.ToString();
+            spa.RateTInsur3 = dgvAdd[colRateTInsur3, row].Value.ToString();
 
-            sad.sedanAgeDriver = dgvAdd[colAgeDriver, row].Value.ToString();
-            if (dgvAdd[colSedanAgeDriverid, row].Value != null)
+            spa.sedanPa = dgvAdd[colCapital, row].Value.ToString();
+            if (dgvAdd[colSedanCapitalId, row].Value != null)
             {
-                sad.sedanAgeDriverId = dgvAdd[colSedanAgeDriverid, row].Value.ToString();
+                spa.sedanPaId = dgvAdd[colSedanCapitalId, row].Value.ToString();
             }
             else
             {
-                sad.sedanAgeDriverId = "";
+                spa.sedanPaId = "";
             }
 
-            return sad;
+            return spa;
         }
 
-        private void FrmSedanAgeDriver_Load(object sender, EventArgs e)
+        private void FrmSedanPa_Load(object sender, EventArgs e)
         {
             setResize();
         }
 
-        private void FrmSedanAgeDriver_Resize(object sender, EventArgs e)
+        private void FrmSedanPa_Resize(object sender, EventArgs e)
         {
             setResize();
         }
@@ -124,10 +122,10 @@ namespace carInsuranceInit.gui
             Boolean chk = false;
             for (int i = 0; i < dgvAdd.RowCount; i++)
             {
-                sad = getSedanAgeCar(i);
-                if (sad != null)
+                spa = getSedanPa(i);
+                if (spa != null)
                 {
-                    if (cic.saveSedanAgeDriver(sad).Length >= 1)
+                    if (cic.saveSedanPa(spa).Length >= 1)
                     {
                         chk = true;
                     }
@@ -176,13 +174,12 @@ namespace carInsuranceInit.gui
         }
         private void Column1_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar)
-                && !char.IsDigit(e.KeyChar))
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
-                //if (e.KeyChar != '.')
-                //{
+                if (e.KeyChar != '.')
+                {
                     e.Handled = true;
-                //}
+                }
             }
         }
     }

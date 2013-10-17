@@ -77,17 +77,42 @@ namespace carInsuranceInit.gui
                 FrmSedanInjuryAsset frm = new FrmSedanInjuryAsset();
                 showFrame(frm);
             }
-            else if (e.Node.Name.ToString() == "nSedanRY01")
-            {
-                FrmSedanRY01 frm = new FrmSedanRY01();
-                showFrame(frm);
-            }
-            else if (e.Node.Name.ToString() == "nSedanRY02")
-            {
-                FrmSedanRY02 frm = new FrmSedanRY02();
-                showFrame(frm);
-            }
             
+            else if (e.Node.Name.ToString() == "nWriteText")
+            {
+                FrmWriteText frm = new FrmWriteText();
+                showFrame(frm);
+            }
+            else if (e.Node.Name.ToString() == "nBrand")
+            {
+                FrmBrand frm = new FrmBrand();
+                showFrame(frm);
+            }
+            else if (e.Node.Name.ToString() == "nSedanModel")
+            {
+                FrmSedanModelView frm = new FrmSedanModelView();
+                showFrame(frm);
+            }
+            else if (e.Node.Name.ToString() == "nSedanPa")
+            {
+                FrmSedanPa frm = new FrmSedanPa();
+                showFrame(frm);
+            }
+            else if (e.Node.Name.ToString() == "nSedanMe")
+            {
+                FrmSedanMe frm = new FrmSedanMe();
+                showFrame(frm);
+            }
+        }
+        private void setResize()
+        {
+            tv1.Width = this.Width - 50;
+            tv1.Height = this.Height - 80;
+        }
+
+        private void FrmMain_Resize(object sender, EventArgs e)
+        {
+            setResize();
         }
     }
 }
