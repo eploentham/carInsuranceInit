@@ -29,6 +29,18 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtSedanModelId = new System.Windows.Forms.TextBox();
+            this.txtBrandId = new System.Windows.Forms.TextBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.chkCatCar5 = new System.Windows.Forms.RadioButton();
+            this.chkCatCar4 = new System.Windows.Forms.RadioButton();
+            this.chkCatCar3 = new System.Windows.Forms.RadioButton();
+            this.chkCatCar2 = new System.Windows.Forms.RadioButton();
+            this.chkCatCar1 = new System.Windows.Forms.RadioButton();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.chkMax2000cc = new System.Windows.Forms.RadioButton();
+            this.chkMin2000cc = new System.Windows.Forms.RadioButton();
             this.txtSedanPrice = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.txtSedanPriceMax = new System.Windows.Forms.TextBox();
@@ -42,22 +54,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.chkCatCar1 = new System.Windows.Forms.RadioButton();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.chkCatCar2 = new System.Windows.Forms.RadioButton();
-            this.chkCatCar3 = new System.Windows.Forms.RadioButton();
-            this.chkCatCar4 = new System.Windows.Forms.RadioButton();
-            this.chkCatCar5 = new System.Windows.Forms.RadioButton();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.txtBrandId = new System.Windows.Forms.TextBox();
-            this.txtSedanModelId = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
-            this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -85,6 +85,136 @@
             this.groupBox1.TabIndex = 11;
             this.groupBox1.TabStop = false;
             // 
+            // txtSedanModelId
+            // 
+            this.txtSedanModelId.Location = new System.Drawing.Point(442, 52);
+            this.txtSedanModelId.Name = "txtSedanModelId";
+            this.txtSedanModelId.Size = new System.Drawing.Size(100, 20);
+            this.txtSedanModelId.TabIndex = 30;
+            // 
+            // txtBrandId
+            // 
+            this.txtBrandId.Location = new System.Drawing.Point(442, 19);
+            this.txtBrandId.Name = "txtBrandId";
+            this.txtBrandId.Size = new System.Drawing.Size(100, 20);
+            this.txtBrandId.TabIndex = 29;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.panel2);
+            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.groupBox2.Location = new System.Drawing.Point(131, 133);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(471, 82);
+            this.groupBox2.TabIndex = 28;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "กลุ่มรถ";
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.chkCatCar5);
+            this.panel2.Controls.Add(this.chkCatCar4);
+            this.panel2.Controls.Add(this.chkCatCar3);
+            this.panel2.Controls.Add(this.chkCatCar2);
+            this.panel2.Controls.Add(this.chkCatCar1);
+            this.panel2.Location = new System.Drawing.Point(8, 24);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(457, 43);
+            this.panel2.TabIndex = 27;
+            // 
+            // chkCatCar5
+            // 
+            this.chkCatCar5.AutoSize = true;
+            this.chkCatCar5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.chkCatCar5.Location = new System.Drawing.Point(399, 15);
+            this.chkCatCar5.Name = "chkCatCar5";
+            this.chkCatCar5.Size = new System.Drawing.Size(36, 24);
+            this.chkCatCar5.TabIndex = 30;
+            this.chkCatCar5.TabStop = true;
+            this.chkCatCar5.Text = "5";
+            this.chkCatCar5.UseVisualStyleBackColor = true;
+            // 
+            // chkCatCar4
+            // 
+            this.chkCatCar4.AutoSize = true;
+            this.chkCatCar4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.chkCatCar4.Location = new System.Drawing.Point(303, 15);
+            this.chkCatCar4.Name = "chkCatCar4";
+            this.chkCatCar4.Size = new System.Drawing.Size(36, 24);
+            this.chkCatCar4.TabIndex = 29;
+            this.chkCatCar4.TabStop = true;
+            this.chkCatCar4.Text = "4";
+            this.chkCatCar4.UseVisualStyleBackColor = true;
+            // 
+            // chkCatCar3
+            // 
+            this.chkCatCar3.AutoSize = true;
+            this.chkCatCar3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.chkCatCar3.Location = new System.Drawing.Point(207, 15);
+            this.chkCatCar3.Name = "chkCatCar3";
+            this.chkCatCar3.Size = new System.Drawing.Size(36, 24);
+            this.chkCatCar3.TabIndex = 28;
+            this.chkCatCar3.TabStop = true;
+            this.chkCatCar3.Text = "3";
+            this.chkCatCar3.UseVisualStyleBackColor = true;
+            // 
+            // chkCatCar2
+            // 
+            this.chkCatCar2.AutoSize = true;
+            this.chkCatCar2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.chkCatCar2.Location = new System.Drawing.Point(111, 15);
+            this.chkCatCar2.Name = "chkCatCar2";
+            this.chkCatCar2.Size = new System.Drawing.Size(36, 24);
+            this.chkCatCar2.TabIndex = 27;
+            this.chkCatCar2.TabStop = true;
+            this.chkCatCar2.Text = "2";
+            this.chkCatCar2.UseVisualStyleBackColor = true;
+            // 
+            // chkCatCar1
+            // 
+            this.chkCatCar1.AutoSize = true;
+            this.chkCatCar1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.chkCatCar1.Location = new System.Drawing.Point(15, 15);
+            this.chkCatCar1.Name = "chkCatCar1";
+            this.chkCatCar1.Size = new System.Drawing.Size(36, 24);
+            this.chkCatCar1.TabIndex = 26;
+            this.chkCatCar1.TabStop = true;
+            this.chkCatCar1.Text = "1";
+            this.chkCatCar1.UseVisualStyleBackColor = true;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.chkMax2000cc);
+            this.panel1.Controls.Add(this.chkMin2000cc);
+            this.panel1.Location = new System.Drawing.Point(238, 88);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(315, 39);
+            this.panel1.TabIndex = 25;
+            // 
+            // chkMax2000cc
+            // 
+            this.chkMax2000cc.AutoSize = true;
+            this.chkMax2000cc.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.chkMax2000cc.Location = new System.Drawing.Point(173, 8);
+            this.chkMax2000cc.Name = "chkMax2000cc";
+            this.chkMax2000cc.Size = new System.Drawing.Size(107, 24);
+            this.chkMax2000cc.TabIndex = 1;
+            this.chkMax2000cc.TabStop = true;
+            this.chkMax2000cc.Text = "เกิน 2000cc";
+            this.chkMax2000cc.UseVisualStyleBackColor = true;
+            // 
+            // chkMin2000cc
+            // 
+            this.chkMin2000cc.AutoSize = true;
+            this.chkMin2000cc.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.chkMin2000cc.Location = new System.Drawing.Point(14, 8);
+            this.chkMin2000cc.Name = "chkMin2000cc";
+            this.chkMin2000cc.Size = new System.Drawing.Size(124, 24);
+            this.chkMin2000cc.TabIndex = 0;
+            this.chkMin2000cc.TabStop = true;
+            this.chkMin2000cc.Text = "ไม่เกิน 2000cc";
+            this.chkMin2000cc.UseVisualStyleBackColor = true;
+            // 
             // txtSedanPrice
             // 
             this.txtSedanPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
@@ -92,6 +222,9 @@
             this.txtSedanPrice.Name = "txtSedanPrice";
             this.txtSedanPrice.Size = new System.Drawing.Size(177, 26);
             this.txtSedanPrice.TabIndex = 23;
+            this.txtSedanPrice.Enter += new System.EventHandler(this.txtSedanPrice_Enter);
+            this.txtSedanPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSedanPrice_KeyPress);
+            this.txtSedanPrice.Leave += new System.EventHandler(this.txtSedanPrice_Leave);
             // 
             // label7
             // 
@@ -110,6 +243,9 @@
             this.txtSedanPriceMax.Name = "txtSedanPriceMax";
             this.txtSedanPriceMax.Size = new System.Drawing.Size(177, 26);
             this.txtSedanPriceMax.TabIndex = 21;
+            this.txtSedanPriceMax.Enter += new System.EventHandler(this.txtSedanPriceMax_Enter);
+            this.txtSedanPriceMax.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSedanPriceMax_KeyPress);
+            this.txtSedanPriceMax.Leave += new System.EventHandler(this.txtSedanPriceMax_Leave);
             // 
             // txtSedanPriceMin
             // 
@@ -118,6 +254,9 @@
             this.txtSedanPriceMin.Name = "txtSedanPriceMin";
             this.txtSedanPriceMin.Size = new System.Drawing.Size(177, 26);
             this.txtSedanPriceMin.TabIndex = 20;
+            this.txtSedanPriceMin.Enter += new System.EventHandler(this.txtSedanPriceMin_Enter);
+            this.txtSedanPriceMin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSedanPriceMin_KeyPress);
+            this.txtSedanPriceMin.Leave += new System.EventHandler(this.txtSedanPriceMin_Leave);
             // 
             // label6
             // 
@@ -146,6 +285,9 @@
             this.txtEngineCC.Name = "txtEngineCC";
             this.txtEngineCC.Size = new System.Drawing.Size(100, 26);
             this.txtEngineCC.TabIndex = 17;
+            this.txtEngineCC.Enter += new System.EventHandler(this.txtEngineCC_Enter);
+            this.txtEngineCC.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtEngineCC_KeyPress);
+            this.txtEngineCC.Leave += new System.EventHandler(this.txtEngineCC_Leave);
             // 
             // label3
             // 
@@ -165,6 +307,9 @@
             this.cboBrand.Name = "cboBrand";
             this.cboBrand.Size = new System.Drawing.Size(205, 28);
             this.cboBrand.TabIndex = 14;
+            this.cboBrand.Click += new System.EventHandler(this.cboBrand_Click);
+            this.cboBrand.Enter += new System.EventHandler(this.cboBrand_Enter);
+            this.cboBrand.Leave += new System.EventHandler(this.cboBrand_Leave);
             // 
             // txtSedanModel
             // 
@@ -173,6 +318,8 @@
             this.txtSedanModel.Name = "txtSedanModel";
             this.txtSedanModel.Size = new System.Drawing.Size(205, 26);
             this.txtSedanModel.TabIndex = 13;
+            this.txtSedanModel.Enter += new System.EventHandler(this.txtSedanModel_Enter);
+            this.txtSedanModel.Leave += new System.EventHandler(this.txtSedanModel_Leave);
             // 
             // label2
             // 
@@ -202,136 +349,7 @@
             this.btnSave.TabIndex = 9;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.radioButton2);
-            this.panel1.Controls.Add(this.radioButton1);
-            this.panel1.Location = new System.Drawing.Point(238, 88);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(315, 39);
-            this.panel1.TabIndex = 25;
-            // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.radioButton1.Location = new System.Drawing.Point(14, 8);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(124, 24);
-            this.radioButton1.TabIndex = 0;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "ไม่เกิน 2000cc";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            // 
-            // radioButton2
-            // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.radioButton2.Location = new System.Drawing.Point(173, 8);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(107, 24);
-            this.radioButton2.TabIndex = 1;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "เกิน 2000cc";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            // 
-            // chkCatCar1
-            // 
-            this.chkCatCar1.AutoSize = true;
-            this.chkCatCar1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.chkCatCar1.Location = new System.Drawing.Point(15, 15);
-            this.chkCatCar1.Name = "chkCatCar1";
-            this.chkCatCar1.Size = new System.Drawing.Size(36, 24);
-            this.chkCatCar1.TabIndex = 26;
-            this.chkCatCar1.TabStop = true;
-            this.chkCatCar1.Text = "1";
-            this.chkCatCar1.UseVisualStyleBackColor = true;
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.chkCatCar5);
-            this.panel2.Controls.Add(this.chkCatCar4);
-            this.panel2.Controls.Add(this.chkCatCar3);
-            this.panel2.Controls.Add(this.chkCatCar2);
-            this.panel2.Controls.Add(this.chkCatCar1);
-            this.panel2.Location = new System.Drawing.Point(8, 24);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(457, 43);
-            this.panel2.TabIndex = 27;
-            // 
-            // chkCatCar2
-            // 
-            this.chkCatCar2.AutoSize = true;
-            this.chkCatCar2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.chkCatCar2.Location = new System.Drawing.Point(111, 15);
-            this.chkCatCar2.Name = "chkCatCar2";
-            this.chkCatCar2.Size = new System.Drawing.Size(36, 24);
-            this.chkCatCar2.TabIndex = 27;
-            this.chkCatCar2.TabStop = true;
-            this.chkCatCar2.Text = "2";
-            this.chkCatCar2.UseVisualStyleBackColor = true;
-            // 
-            // chkCatCar3
-            // 
-            this.chkCatCar3.AutoSize = true;
-            this.chkCatCar3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.chkCatCar3.Location = new System.Drawing.Point(207, 15);
-            this.chkCatCar3.Name = "chkCatCar3";
-            this.chkCatCar3.Size = new System.Drawing.Size(36, 24);
-            this.chkCatCar3.TabIndex = 28;
-            this.chkCatCar3.TabStop = true;
-            this.chkCatCar3.Text = "3";
-            this.chkCatCar3.UseVisualStyleBackColor = true;
-            // 
-            // chkCatCar4
-            // 
-            this.chkCatCar4.AutoSize = true;
-            this.chkCatCar4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.chkCatCar4.Location = new System.Drawing.Point(303, 15);
-            this.chkCatCar4.Name = "chkCatCar4";
-            this.chkCatCar4.Size = new System.Drawing.Size(36, 24);
-            this.chkCatCar4.TabIndex = 29;
-            this.chkCatCar4.TabStop = true;
-            this.chkCatCar4.Text = "4";
-            this.chkCatCar4.UseVisualStyleBackColor = true;
-            // 
-            // chkCatCar5
-            // 
-            this.chkCatCar5.AutoSize = true;
-            this.chkCatCar5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.chkCatCar5.Location = new System.Drawing.Point(399, 15);
-            this.chkCatCar5.Name = "chkCatCar5";
-            this.chkCatCar5.Size = new System.Drawing.Size(36, 24);
-            this.chkCatCar5.TabIndex = 30;
-            this.chkCatCar5.TabStop = true;
-            this.chkCatCar5.Text = "5";
-            this.chkCatCar5.UseVisualStyleBackColor = true;
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.panel2);
-            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.groupBox2.Location = new System.Drawing.Point(131, 133);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(471, 82);
-            this.groupBox2.TabIndex = 28;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "กลุ่มรถ";
-            // 
-            // txtBrandId
-            // 
-            this.txtBrandId.Location = new System.Drawing.Point(442, 19);
-            this.txtBrandId.Name = "txtBrandId";
-            this.txtBrandId.Size = new System.Drawing.Size(100, 20);
-            this.txtBrandId.TabIndex = 29;
-            // 
-            // txtSedanModelId
-            // 
-            this.txtSedanModelId.Location = new System.Drawing.Point(442, 52);
-            this.txtSedanModelId.Name = "txtSedanModelId";
-            this.txtSedanModelId.Size = new System.Drawing.Size(100, 20);
-            this.txtSedanModelId.TabIndex = 30;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // FrmSedanModelAdd
             // 
@@ -340,14 +358,16 @@
             this.ClientSize = new System.Drawing.Size(641, 354);
             this.Controls.Add(this.groupBox1);
             this.Name = "FrmSedanModelAdd";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmSedanModelAdd";
+            this.Load += new System.EventHandler(this.FrmSedanModelAdd_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -356,8 +376,8 @@
 
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton chkMax2000cc;
+        private System.Windows.Forms.RadioButton chkMin2000cc;
         private System.Windows.Forms.TextBox txtSedanPrice;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtSedanPriceMax;

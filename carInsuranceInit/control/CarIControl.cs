@@ -28,6 +28,7 @@ namespace carInsuranceInit.control
         public BrandDB branddb;
         public SedanPaDB spadb;
         public SedanMeDB smedb;
+        public SedanModelDB smdb;
 
         SedanUseCar suc;
         SedanEngineCC sec;
@@ -41,6 +42,7 @@ namespace carInsuranceInit.control
         Brand brand;
         SedanPa spa;
         SedanMe sme;
+        SedanModel sm;
 
         WriteText wt;
 
@@ -68,6 +70,7 @@ namespace carInsuranceInit.control
 
             spa = new SedanPa();
             sme = new SedanMe();
+            sm = new SedanModel();
 
             sucdb = new SedanUseCarDB(conn);
             secdb = new SedanEngineCCDB(conn);
@@ -84,6 +87,7 @@ namespace carInsuranceInit.control
 
             spadb = new SedanPaDB(conn);
             smedb = new SedanMeDB(conn);
+            smdb = new SedanModelDB(conn);
         }
         public SedanUseCar selectSedanUsecar()
         {
@@ -143,6 +147,11 @@ namespace carInsuranceInit.control
         public DataTable selectSedanPa()
         {
             DataTable dt = spadb.selectAll();
+            return dt;
+        }
+        public DataTable selectSedanModel()
+        {
+            DataTable dt = smdb.selectAll();
             return dt;
         }
 
@@ -209,15 +218,22 @@ namespace carInsuranceInit.control
         public String saveSedanPa(SedanPa p)
         {
             String chk = "";
-            chk = spadb.insertSedanInjuryTime(p);
+            chk = spadb.insertSedanPa(p);
             return chk;
         }
         public String saveSedanMe(SedanMe p)
         {
             String chk = "";
-            chk = smedb.insertSedanInjuryTime(p);
+            chk = smedb.insertSedanMe(p);
             return chk;
         }
+        public String saveSedanModel(SedanModel p)
+        {
+            String chk = "";
+            chk = smdb.insertSedanModel(p);
+            return chk;
+        }
+
         public String writeSedanAgeCar()
         {
             String data="",chk="";

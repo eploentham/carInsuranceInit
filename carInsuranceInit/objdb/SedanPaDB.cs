@@ -121,7 +121,7 @@ namespace carInsuranceInit.objdb
             }
             return chk;
         }
-        public String insertSedanInjuryTime(SedanPa p)
+        public String insertSedanPa(SedanPa p)
         {
             SedanPa item = new SedanPa();
             String chk = "";

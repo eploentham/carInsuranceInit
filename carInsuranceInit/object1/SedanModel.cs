@@ -12,9 +12,14 @@ namespace carInsuranceInit.object1
         public String sedanEngineCC = "";
         public String sedanCatCar = "";
         public String brandId = "";
+        public String brandName = "";
         public String priceMin = "";
         public String priceMax = "";
         public String price = "";
         public String statusEngineCC = "";
+        public override string ToString()
+        {
+            return sedanModel;
+        }
     }
 }

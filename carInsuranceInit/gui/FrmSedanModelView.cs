@@ -21,6 +21,12 @@ namespace carInsuranceInit.gui
         {
             cic = new CarIControl();
             sit = new SedanInjuryTime();
+            cboBrand = cic.branddb.getCboCustomer(cboBrand);
+        }
+        public FrmSedanModelView()
+        {
+            InitializeComponent();
+            initConfig();
         }
         private void setResize()
         {
@@ -32,8 +38,8 @@ namespace carInsuranceInit.gui
         }
         public void setData()
         {
-            DataTable dt = new DataTable();            
-
+            DataTable dt = new DataTable();
+            dt = cic.smdb.selectAll();
             dgvView.ColumnCount = colCnt;
 
             dgvView.RowCount = dt.Rows.Count + 1;
@@ -41,11 +47,11 @@ namespace carInsuranceInit.gui
             dgvView.Columns[colRow].Width = 50;
             dgvView.Columns[colBrand].Width = 150;
             dgvView.Columns[colSedanModel].Width = 120;
-            dgvView.Columns[colCatCar].Width = 300;
-            dgvView.Columns[colEngineCC].Width = 120;
-            dgvView.Columns[colPriceMin].Width = 100;
+            dgvView.Columns[colCatCar].Width = 80;
+            dgvView.Columns[colEngineCC].Width = 140;
+            dgvView.Columns[colPriceMin].Width = 120;
             dgvView.Columns[colPriceMax].Width = 120;
-            dgvView.Columns[colPrice].Width = 80;
+            dgvView.Columns[colPrice].Width = 120;
             dgvView.Columns[colSedanModelId].Width = 80;
 
             dgvView.Columns[colRow].HeaderText = "ลำดับ";
@@ -54,7 +60,7 @@ namespace carInsuranceInit.gui
             dgvView.Columns[colCatCar].HeaderText = "กลุ่มรถ";
             dgvView.Columns[colEngineCC].HeaderText = "ขนาดเครื่องยนต์";
             dgvView.Columns[colPriceMin].HeaderText = "ราคาขั้นต่ำ";
-            dgvView.Columns[colPriceMax].HeaderText = "วันที่ราคาขั้นสูง";
+            dgvView.Columns[colPriceMax].HeaderText = "ราคาขั้นสูง";
             dgvView.Columns[colPrice].HeaderText = "ราคากลาง";
             dgvView.Columns[colSedanModelId].HeaderText = "id";
             Font font = new Font("Microsoft Sans Serif", 12);
@@ -66,14 +72,14 @@ namespace carInsuranceInit.gui
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
                     dgvView[colRow, i].Value = (i + 1);
-                    //dgvView[colInvNumber, i].Value = dt.Rows[i][invdb.inv.invNumber].ToString();
-                    //dgvView[colInvDate, i].Value = dc.config1.dateDBtoShow1(dt.Rows[i][invdb.inv.invDate].ToString());
-                    //dgvView[colCustName, i].Value = dt.Rows[i][invdb.inv.custName].ToString();
-                    //dgvView[colInvAmount, i].Value = dc.config1.NumberNull(dt.Rows[i][invdb.inv.invAmount]);
-                    //dgvView[colTermPay, i].Value = dt.Rows[i][invdb.inv.termPayment].ToString();
-                    //dgvView[colDueDate, i].Value = dc.config1.dateDBtoShow1(dt.Rows[i][invdb.inv.dueDate].ToString());
-                    //dgvView[colInvId, i].Value = dt.Rows[i][invdb.inv.invId].ToString();
-                    //dgvView[colRecpNumber, i].Value = dt.Rows[i][invdb.inv.receiptNumber].ToString();
+                    dgvView[colBrand, i].Value = dt.Rows[i][cic.smdb.sm.brandName].ToString();
+                    dgvView[colSedanModel, i].Value = dt.Rows[i][cic.smdb.sm.sedanModel].ToString();
+                    dgvView[colCatCar, i].Value = dt.Rows[i][cic.smdb.sm.sedanCatCar].ToString();
+                    dgvView[colEngineCC, i].Value = dt.Rows[i][cic.smdb.sm.sedanEngineCC].ToString();
+                    dgvView[colPriceMin, i].Value = dt.Rows[i][cic.smdb.sm.priceMin].ToString();
+                    dgvView[colPriceMax, i].Value = dt.Rows[i][cic.smdb.sm.priceMax].ToString();
+                    dgvView[colPrice, i].Value = dt.Rows[i][cic.smdb.sm.price].ToString();
+                    dgvView[colSedanModelId, i].Value = dt.Rows[i][cic.smdb.sm.sedanModelId].ToString();
 
                     if ((i % 2) != 0)
                     {
@@ -81,10 +87,6 @@ namespace carInsuranceInit.gui
                     }
                 }
             }
-        }
-        public FrmSedanModelView()
-        {
-            InitializeComponent();
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -97,6 +99,23 @@ namespace carInsuranceInit.gui
         private void FrmSedanModel_Load(object sender, EventArgs e)
         {
             setResize();
+            setData();
+        }
+
+        private void dgvView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex == -1)
+            {
+                return;
+            }
+            if (dgvView[colSedanModelId, e.RowIndex].Value == null)
+            {
+                return;
+            }
+            FrmSedanModelAdd frmDepositAdd = new FrmSedanModelAdd();
+            frmDepositAdd.setData(dgvView[colSedanModelId, e.RowIndex].Value.ToString());
+            frmDepositAdd.ShowDialog(this);
+            setData();
         }
     }
 }

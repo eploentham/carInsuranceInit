@@ -124,5 +124,19 @@ namespace carInsuranceInit.objdb
             chk = conn.ExecuteNonQuery(sql);
             return chk;
         }
+        public ComboBox getCboCustomer(ComboBox c)
+        {
+            ComboBoxItem item = new ComboBoxItem();
+            DataTable dt = selectAll();
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                item = new ComboBoxItem();
+                item.Value = dt.Rows[i][brand.brandId].ToString();
+                item.Text = dt.Rows[i][brand.brandName].ToString();
+                c.Items.Add(item);
+                //c.Items.Add(new );
+            }
+            return c;
+        }
     }
 }
