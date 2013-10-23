@@ -15,8 +15,8 @@ namespace carInsuranceInit.gui
     {
         private CarIControl cic;
         SedanMe sme;
-        int colRow = 0, colCapital = 1, colRateTInsur1 = 2, colRateTInsur2 = 3, colRateTInsur3 = 4, colSedanCapitalId = 5;
-        int colCnt = 6;
+        int colRow = 0, colCapital = 1, colRateTInsur1 = 2, colRateTInsur2 = 3, colRateTInsur3 = 4, colSedanCapitalId = 5, colDel=6;
+        int colCnt = 7;
         private void initConfig()
         {
             cic = new CarIControl();
@@ -179,6 +179,24 @@ namespace carInsuranceInit.gui
                 if (e.KeyChar != '.')
                 {
                     e.Handled = true;
+                }
+            }
+        }
+
+        private void dgvAdd_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == colDel)
+            {
+                //MessageBox.Show("ต้องการยกเลิกข้อมูลรายการ","ยกเลิก");
+                DialogResult dialogResult = MessageBox.Show("ต้องการยกเลิกรายการ \n", "ยกเลิกรายการ", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    String sacId = "";
+                    if (dgvAdd[colSedanCapitalId, e.RowIndex].Value != null)
+                    {
+                        cic.smdb.updateUnActive(dgvAdd[colSedanCapitalId, e.RowIndex].Value.ToString());
+                        this.Dispose();
+                    }
                 }
             }
         }

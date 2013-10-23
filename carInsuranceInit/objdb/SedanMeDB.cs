@@ -25,6 +25,7 @@ namespace carInsuranceInit.objdb
             sme.RateTInsur3 = "rate_t_insur3";
             sme.sedanMe = "sedan_me";
             sme.sedanMeId = "sedan_me_id";
+            sme.sedanMeActive = "sedan_me_active";
 
             sme.table = "sedan_me";
             sme.sited = "";
@@ -46,7 +47,7 @@ namespace carInsuranceInit.objdb
             //SedanAgeCar item = new SedanAgeCar();
             String sql = "";
             DataTable dt = new DataTable();
-            sql = "Select * From " + sme.table + " ";
+            sql = "Select * From " + sme.table + " Where " + sme.sedanMeActive + "='1'";
             dt = conn.selectData(sql);
 
             return dt;
@@ -70,6 +71,10 @@ namespace carInsuranceInit.objdb
             if (p.sedanMeId.Equals(""))
             {
                 p.sedanMeId = p.getGenID();
+            }
+            if (p.sedanMeActive.Equals(""))
+            {
+                p.sedanMeActive = "1";
             }
             p.sedanMe = p.sedanMe.Replace("''", "'");
             p.RateTInsur1 = p.RateTInsur1.Replace(",", "");
@@ -142,6 +147,14 @@ namespace carInsuranceInit.objdb
         {
             String sql = "", chk = "";
             sql = "Delete From " + sme.table;
+            chk = conn.ExecuteNonQuery(sql);
+            return chk;
+        }
+        public String updateUnActive(String sacId)
+        {
+            String sql = "", chk = "";
+            sql = "Update  " + sme.table + " Set " + sme.sedanMeActive + "='3' "+
+                "Where "+sme.sedanMeId+"='"+sacId+"'";
             chk = conn.ExecuteNonQuery(sql);
             return chk;
         }

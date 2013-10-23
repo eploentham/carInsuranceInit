@@ -12,6 +12,8 @@ namespace carInsuranceInit.object1
         public String RateTInsur1 = "";
         public String RateTInsur2 = "";
         public String RateTInsur3 = "";
+        public String sedanInjuryTimeActive = "";
+
         public override string ToString()
         {
             return sedanInjuryTime;

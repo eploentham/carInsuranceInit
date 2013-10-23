@@ -68,6 +68,14 @@ namespace carInsuranceInit.gui
             {
                 chkMax2000cc.Checked = true;
             }
+            if (sm.sedanModelActive.Equals("3"))
+            {
+                setControlDisAbled();
+            }
+            else
+            {
+                setControlEnAbled();
+            }
             //cboTypeCust.Text = cic.smdb.selectCustomerTypeNameById(sm.sedanModelId);
         }
         private void getData()
@@ -84,19 +92,19 @@ namespace carInsuranceInit.gui
             }
             else if (chkCatCar2.Checked)
             {
-                sm.sedanCatCar = "1";
+                sm.sedanCatCar = "2";
             }
             else if (chkCatCar3.Checked)
             {
-                sm.sedanCatCar = "1";
+                sm.sedanCatCar = "3";
             }
             else if (chkCatCar4.Checked)
             {
-                sm.sedanCatCar = "1";
+                sm.sedanCatCar = "4";
             }
             else if (chkCatCar5.Checked)
             {
-                sm.sedanCatCar = "1";
+                sm.sedanCatCar = "5";
             }
             sm.sedanEngineCC = txtEngineCC.Text;
             sm.sedanModel = txtSedanModel.Text;
@@ -273,7 +281,61 @@ namespace carInsuranceInit.gui
 
         private void cboBrand_Click(object sender, EventArgs e)
         {
-            txtBrandId.Text = cboBrand.SelectedValue.ToString();
+            
+        }
+
+        private void cboBrand_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ComboBoxItem item = new ComboBoxItem();
+            item = (ComboBoxItem)cboBrand.SelectedItem;
+            txtBrandId.Text = item.Value;
+        }
+
+        private void btnUnActive_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("ต้องการยกเลิกรายการ \n" + "ยี่ห้อ :" + cboBrand.Text, "ยกเลิกรายการ", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                cic.smdb.updateUnActive(txtSedanModelId.Text);
+                this.Dispose();
+            }
+        }
+
+        private void setControlDisAbled()
+        {
+            cboBrand.Enabled = false;
+            txtSedanModel.Enabled = false;
+            txtEngineCC.Enabled = false;
+            groupBox2.Enabled = false;
+            txtSedanPriceMin.Enabled = false;
+            txtSedanPriceMax.Enabled = false;
+            txtSedanPrice.Enabled = false;
+            //btnPrint.Enabled = true;
+            btnSave.Enabled = false;
+            btnUnActive.Enabled = true;
+        }
+        private void setControlEnAbled()
+        {
+            cboBrand.Enabled = true;
+            txtSedanModel.Enabled = true;
+            txtEngineCC.Enabled = true;
+            groupBox2.Enabled = true;
+            txtSedanPriceMin.Enabled = true;
+            txtSedanPriceMax.Enabled = true;
+            txtSedanPrice.Enabled = true;
+            //btnPrint.Enabled = true;
+            btnSave.Enabled = true;
+            btnUnActive.Enabled = false;
+        }
+
+        private void chkActive_Click(object sender, EventArgs e)
+        {
+            setControlEnAbled();
+        }
+
+        private void chkUnActive_Click(object sender, EventArgs e)
+        {
+            setControlDisAbled();
         }
     }
 }

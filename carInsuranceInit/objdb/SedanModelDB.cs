@@ -27,9 +27,10 @@ namespace carInsuranceInit.objdb
             sm.priceMin = "price_max";
             sm.sedanCatCar = "sedan_cat_car";
             sm.sedanEngineCC = "sedan_engine_cc";
-            sm.sedanModel = "sedan_model";
+            sm.sedanModel = "sedan_model_name";
             sm.sedanModelId = "sedan_model_id";
             sm.statusEngineCC = "status_engine_cc";
+            sm.sedanModelActive = "sedan_model_active";
 
             sm.sited = "";
             sm.table = "sedan_model";
@@ -56,7 +57,7 @@ namespace carInsuranceInit.objdb
             //SedanAgeCar item = new SedanAgeCar();
             String sql = "";
             DataTable dt = new DataTable();
-            sql = "Select * From " + sm.table + " ";
+            sql = "Select * From " + sm.table + " Where " + sm.sedanModelActive + "='1'";
             dt = conn.selectData(sql);
 
             return dt;
@@ -81,6 +82,10 @@ namespace carInsuranceInit.objdb
             {
                 p.sedanModelId = p.getGenID();
             }
+            if (p.sedanModelActive.Equals(""))
+            {
+                p.sedanModelActive = "1";
+            }
             p.sedanModel = p.sedanModel.Replace("''", "'");
             p.price = p.price.Replace(",", "");
             p.priceMax = p.priceMax.Replace(",", "");
@@ -89,11 +94,11 @@ namespace carInsuranceInit.objdb
             sql = "Insert Into " + sm.table + " (" + sm.pkField + "," + sm.brandId + "," +
                 sm.price + "," + sm.priceMax + "," + sm.priceMin + "," +
                 sm.sedanCatCar + "," + sm.sedanEngineCC + "," + sm.sedanModel + "," +
-                sm.statusEngineCC + ") " +
+                sm.statusEngineCC+","+sm.brandName + ") " +
                 "Values('" + p.sedanModelId + "','" + p.brandId + "','" +
                 p.price + "','" + p.priceMax + "','" + p.priceMin + "','" +
                 p.sedanCatCar + "','" + p.sedanEngineCC + "','" + p.sedanModel + "','" +
-                p.statusEngineCC + "') ";
+                p.statusEngineCC+"','"+p.brandName + "') ";
             try
             {
                 chk = conn.ExecuteNonQuery(sql);
@@ -123,8 +128,9 @@ namespace carInsuranceInit.objdb
                 sm.priceMin + "='" + p.priceMin + "', " +
                 sm.sedanCatCar + "='" + p.sedanCatCar + "', " +
                 sm.sedanEngineCC + "='" + p.sedanEngineCC + "', " +
-                sm.sedanModel + "='" + p.sedanModel + "', " +
-                sm.statusEngineCC + "='" + p.statusEngineCC + "' " +
+                //sm.sedanModel + "='" + p.sedanModel + "', " +
+                sm.statusEngineCC + "='" + p.statusEngineCC + "', " +
+                sm.brandName + "='" + p.brandName + "' " +
                 "Where " + sm.pkField + "='" + p.sedanModelId + "'";
             try
             {
@@ -160,6 +166,14 @@ namespace carInsuranceInit.objdb
         {
             String sql = "", chk = "";
             sql = "Delete From " + sm.table;
+            chk = conn.ExecuteNonQuery(sql);
+            return chk;
+        }
+        public String updateUnActive(String sacId)
+        {
+            String sql = "", chk = "";
+            sql = "Update  " + sm.table + " Set " + sm.sedanModelActive + "='3' "+
+                "Where "+sm.sedanModelId+"='"+sacId+"'";
             chk = conn.ExecuteNonQuery(sql);
             return chk;
         }

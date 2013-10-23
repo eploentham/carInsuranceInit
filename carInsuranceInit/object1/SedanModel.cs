@@ -17,6 +17,8 @@ namespace carInsuranceInit.object1
         public String priceMax = "";
         public String price = "";
         public String statusEngineCC = "";
+        public String sedanModelActive = "";
+
         public override string ToString()
         {
             return sedanModel;

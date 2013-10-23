@@ -16,8 +16,8 @@ namespace carInsuranceInit.gui
     {
         private CarIControl cic;
         SedanAgeDriver sad;
-        int colRow = 0, colAgeDriver = 1, colRateTInsur1 = 2, colRateTInsur2 = 3, colRateTInsur3 = 4, colSedanAgeDriverid = 5;
-        int colCnt = 6;
+        int colRow = 0, colAgeDriver = 1, colRateTInsur1 = 2, colRateTInsur2 = 3, colRateTInsur3 = 4, colSedanAgeDriverid = 5, colDel=6;
+        int colCnt = 7;
         private void initConfig()
         {
             cic = new CarIControl();
@@ -49,6 +49,7 @@ namespace carInsuranceInit.gui
             dgvAdd.Columns[colRateTInsur2].Width = 150;
             dgvAdd.Columns[colRateTInsur3].Width = 150;
             dgvAdd.Columns[colSedanAgeDriverid].Width = 120;
+            dgvAdd.Columns[colDel].Width = 50;
             //dgvAdd.Columns[colAmount].Width = 120;
 
             dgvAdd.Columns[colRow].HeaderText = "ลำดับ";
@@ -57,6 +58,7 @@ namespace carInsuranceInit.gui
             dgvAdd.Columns[colRateTInsur1].HeaderText = "อัตรา ประเภท1";
             dgvAdd.Columns[colRateTInsur2].HeaderText = "อัตรา ประเภท2";
             dgvAdd.Columns[colRateTInsur3].HeaderText = "อัตรา ประเภท3";
+            dgvAdd.Columns[colDel].HeaderText = " ";
 
             dgvAdd.Columns[colSedanAgeDriverid].HeaderText = "sedanagedriverid";
             //dgvAdd.Columns[colAmount].HeaderText = "จำนวนเงิน";
@@ -76,6 +78,7 @@ namespace carInsuranceInit.gui
                     dgvAdd[colRateTInsur1, i].Value = dt.Rows[i][cic.saddb.sad.RateTInsur1].ToString();
                     dgvAdd[colRateTInsur2, i].Value = dt.Rows[i][cic.saddb.sad.RateTInsur2].ToString();
                     dgvAdd[colRateTInsur3, i].Value = dt.Rows[i][cic.saddb.sad.RateTInsur3].ToString();
+                    dgvAdd[colDel, i].Value = "ยกเลิก";
                     if ((i % 2) != 0)
                     {
                         dgvAdd.Rows[i].DefaultCellStyle.BackColor = Color.LightSalmon;
@@ -183,6 +186,24 @@ namespace carInsuranceInit.gui
                 //{
                     e.Handled = true;
                 //}
+            }
+        }
+
+        private void dgvAdd_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == colDel)
+            {
+                //MessageBox.Show("ต้องการยกเลิกข้อมูลรายการ","ยกเลิก");
+                DialogResult dialogResult = MessageBox.Show("ต้องการยกเลิกรายการ \n" + dgvAdd[colAgeDriver, e.RowIndex].Value.ToString(), "ยกเลิกรายการ ", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    String sacId = "";
+                    if (dgvAdd[colSedanAgeDriverid, e.RowIndex].Value != null)
+                    {
+                        cic.saddb.updateUnActive(dgvAdd[colSedanAgeDriverid, e.RowIndex].Value.ToString());
+                        this.Dispose();
+                    }
+                }
             }
         }
     }

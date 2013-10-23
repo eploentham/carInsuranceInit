@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnUnActive = new System.Windows.Forms.Button();
+            this.chkUnActive = new System.Windows.Forms.RadioButton();
+            this.chkActive = new System.Windows.Forms.RadioButton();
             this.txtSedanModelId = new System.Windows.Forms.TextBox();
             this.txtBrandId = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -62,6 +65,9 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnUnActive);
+            this.groupBox1.Controls.Add(this.chkUnActive);
+            this.groupBox1.Controls.Add(this.chkActive);
             this.groupBox1.Controls.Add(this.txtSedanModelId);
             this.groupBox1.Controls.Add(this.txtBrandId);
             this.groupBox1.Controls.Add(this.groupBox2);
@@ -84,6 +90,42 @@
             this.groupBox1.Size = new System.Drawing.Size(617, 326);
             this.groupBox1.TabIndex = 11;
             this.groupBox1.TabStop = false;
+            // 
+            // btnUnActive
+            // 
+            this.btnUnActive.Location = new System.Drawing.Point(506, 224);
+            this.btnUnActive.Name = "btnUnActive";
+            this.btnUnActive.Size = new System.Drawing.Size(103, 23);
+            this.btnUnActive.TabIndex = 33;
+            this.btnUnActive.Text = "ยกเลิกการใช้งาน";
+            this.btnUnActive.UseVisualStyleBackColor = true;
+            this.btnUnActive.Click += new System.EventHandler(this.btnUnActive_Click);
+            // 
+            // chkUnActive
+            // 
+            this.chkUnActive.AutoSize = true;
+            this.chkUnActive.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.chkUnActive.Location = new System.Drawing.Point(394, 224);
+            this.chkUnActive.Name = "chkUnActive";
+            this.chkUnActive.Size = new System.Drawing.Size(106, 24);
+            this.chkUnActive.TabIndex = 32;
+            this.chkUnActive.TabStop = true;
+            this.chkUnActive.Text = "ยกเลิกใช้งาน";
+            this.chkUnActive.UseVisualStyleBackColor = true;
+            this.chkUnActive.Click += new System.EventHandler(this.chkUnActive_Click);
+            // 
+            // chkActive
+            // 
+            this.chkActive.AutoSize = true;
+            this.chkActive.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.chkActive.Location = new System.Drawing.Point(322, 224);
+            this.chkActive.Name = "chkActive";
+            this.chkActive.Size = new System.Drawing.Size(66, 24);
+            this.chkActive.TabIndex = 31;
+            this.chkActive.TabStop = true;
+            this.chkActive.Text = "ใช้งาน";
+            this.chkActive.UseVisualStyleBackColor = true;
+            this.chkActive.Click += new System.EventHandler(this.chkActive_Click);
             // 
             // txtSedanModelId
             // 
@@ -307,6 +349,7 @@
             this.cboBrand.Name = "cboBrand";
             this.cboBrand.Size = new System.Drawing.Size(205, 28);
             this.cboBrand.TabIndex = 14;
+            this.cboBrand.SelectedIndexChanged += new System.EventHandler(this.cboBrand_SelectedIndexChanged);
             this.cboBrand.Click += new System.EventHandler(this.cboBrand_Click);
             this.cboBrand.Enter += new System.EventHandler(this.cboBrand_Enter);
             this.cboBrand.Leave += new System.EventHandler(this.cboBrand_Leave);
@@ -343,7 +386,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(506, 270);
+            this.btnSave.Location = new System.Drawing.Point(506, 279);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(105, 41);
             this.btnSave.TabIndex = 9;
@@ -400,5 +443,8 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TextBox txtSedanModelId;
         private System.Windows.Forms.TextBox txtBrandId;
+        private System.Windows.Forms.Button btnUnActive;
+        private System.Windows.Forms.RadioButton chkUnActive;
+        private System.Windows.Forms.RadioButton chkActive;
     }
 }

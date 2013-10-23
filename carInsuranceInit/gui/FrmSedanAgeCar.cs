@@ -15,8 +15,8 @@ namespace carInsuranceInit.gui
     public partial class FrmSedanAgeCar : Form
     {
         private CarIControl cic;
-        int colRow = 0, colAgeCar = 1, colRateTInsur1 = 2, colRateTInsur2 = 3, colRateTInsur3 = 4, colSedanAgeCarid = 5;
-        int colCnt = 6;
+        int colRow = 0, colAgeCar = 1, colRateTInsur1 = 2, colRateTInsur2 = 3, colRateTInsur3 = 4, colSedanAgeCarid = 5, colDel=6;
+        int colCnt = 7;
         SedanAgeCar sac;
         private void initConfig()
         {
@@ -49,6 +49,7 @@ namespace carInsuranceInit.gui
             dgvAdd.Columns[colRateTInsur2].Width = 150;
             dgvAdd.Columns[colRateTInsur3].Width = 150;
             dgvAdd.Columns[colSedanAgeCarid].Width = 120;
+            dgvAdd.Columns[colDel].Width = 50;
             //dgvAdd.Columns[colAmount].Width = 120;
 
             dgvAdd.Columns[colRow].HeaderText = "ลำดับ";
@@ -57,12 +58,14 @@ namespace carInsuranceInit.gui
             dgvAdd.Columns[colRateTInsur1].HeaderText = "อัตรา ประเภท1";
             dgvAdd.Columns[colRateTInsur2].HeaderText = "อัตรา ประเภท2";
             dgvAdd.Columns[colRateTInsur3].HeaderText = "อัตรา ประเภท3";
+            dgvAdd.Columns[colDel].HeaderText = " ";
             
             dgvAdd.Columns[colSedanAgeCarid].HeaderText = "sedanagecarid";
             //dgvAdd.Columns[colAmount].HeaderText = "จำนวนเงิน";
             Font font = new Font("Microsoft Sans Serif", 12);
             dgvAdd.Columns[colSedanAgeCarid].Visible = false;
             dgvAdd.Columns[colRow].ReadOnly = true;
+            dgvAdd.Columns[colDel].ReadOnly = true;
 
             dgvAdd.Font = font;
             if (dt.Rows.Count > 0)
@@ -76,6 +79,7 @@ namespace carInsuranceInit.gui
                     dgvAdd[colRateTInsur1, i].Value = dt.Rows[i][cic.sacdb.sac.RateTInsur1].ToString();
                     dgvAdd[colRateTInsur2, i].Value = dt.Rows[i][cic.sacdb.sac.RateTInsur2].ToString();
                     dgvAdd[colRateTInsur3, i].Value = dt.Rows[i][cic.sacdb.sac.RateTInsur3].ToString();
+                    dgvAdd[colDel, i].Value = "ยกเลิก";
                     if ((i % 2) != 0)
                     {
                         dgvAdd.Rows[i].DefaultCellStyle.BackColor = Color.LightSalmon;
@@ -183,6 +187,27 @@ namespace carInsuranceInit.gui
                     e.Handled = true;
                 //}
             }
+        }
+
+        private void dgvAdd_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == colDel)
+            {
+                //MessageBox.Show("ต้องการยกเลิกข้อมูลรายการ","ยกเลิก");
+                DialogResult dialogResult = MessageBox.Show("ต้องการยกเลิกรายการ \n" , "ยกเลิกรายการ", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    String sacId = "";
+                    if (dgvAdd[colSedanAgeCarid,e.RowIndex].Value != null)
+                    {
+                        cic.sacdb.updateUnActive(dgvAdd[colSedanAgeCarid, e.RowIndex].Value.ToString());
+                        this.Dispose();
+                    }
+                }
+            }
+            //FrmSedanAgeCar frm = new FrmSedanAgeCar();
+            //frm.setData();
+            //frm.ShowDialog(this);
         }
     }
 }

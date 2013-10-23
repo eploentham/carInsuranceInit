@@ -50,6 +50,7 @@
             this.dgvAdd.Name = "dgvAdd";
             this.dgvAdd.Size = new System.Drawing.Size(867, 395);
             this.dgvAdd.TabIndex = 2;
+            this.dgvAdd.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAdd_CellDoubleClick);
             this.dgvAdd.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dgvAdd_EditingControlShowing);
             // 
             // FrmSedanAgeDriver

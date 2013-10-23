@@ -40,6 +40,7 @@
             this.dgvAdd.Name = "dgvAdd";
             this.dgvAdd.Size = new System.Drawing.Size(846, 395);
             this.dgvAdd.TabIndex = 0;
+            this.dgvAdd.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAdd_CellDoubleClick);
             this.dgvAdd.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dgvAdd_EditingControlShowing);
             // 
             // btnSave
