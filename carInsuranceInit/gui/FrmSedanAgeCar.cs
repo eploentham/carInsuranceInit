@@ -73,7 +73,7 @@ namespace carInsuranceInit.gui
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
                     dgvAdd[colRow,i].Value = (i+1);
-                    dgvAdd[colSedanAgeCarid, i].Value = dt.Rows[i][cic.sacdb.sac.sedanAgeCar].ToString();
+                    dgvAdd[colSedanAgeCarid, i].Value = dt.Rows[i][cic.sacdb.sac.sedanAgeCarId].ToString();
 
                     dgvAdd[colAgeCar, i].Value = dt.Rows[i][cic.sacdb.sac.sedanAgeCar].ToString();
                     dgvAdd[colRateTInsur1, i].Value = dt.Rows[i][cic.sacdb.sac.RateTInsur1].ToString();
@@ -193,8 +193,12 @@ namespace carInsuranceInit.gui
         {
             if (e.ColumnIndex == colDel)
             {
+                if (dgvAdd[colAgeCar, e.RowIndex].Value == null)
+                {
+                    return;
+                }
                 //MessageBox.Show("ต้องการยกเลิกข้อมูลรายการ","ยกเลิก");
-                DialogResult dialogResult = MessageBox.Show("ต้องการยกเลิกรายการ \n" , "ยกเลิกรายการ", MessageBoxButtons.YesNo);
+                DialogResult dialogResult = MessageBox.Show("ต้องการยกเลิกรายการ \nอายุรถ : " + dgvAdd[colAgeCar, e.RowIndex].Value.ToString(), "ยกเลิกรายการ", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
                     String sacId = "";

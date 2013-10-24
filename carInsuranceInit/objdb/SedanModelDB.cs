@@ -94,11 +94,13 @@ namespace carInsuranceInit.objdb
             sql = "Insert Into " + sm.table + " (" + sm.pkField + "," + sm.brandId + "," +
                 sm.price + "," + sm.priceMax + "," + sm.priceMin + "," +
                 sm.sedanCatCar + "," + sm.sedanEngineCC + "," + sm.sedanModel + "," +
-                sm.statusEngineCC+","+sm.brandName + ") " +
+                sm.statusEngineCC+","+sm.brandName+","+
+                sm.sedanModelActive + ") " +
                 "Values('" + p.sedanModelId + "','" + p.brandId + "','" +
                 p.price + "','" + p.priceMax + "','" + p.priceMin + "','" +
                 p.sedanCatCar + "','" + p.sedanEngineCC + "','" + p.sedanModel + "','" +
-                p.statusEngineCC+"','"+p.brandName + "') ";
+                p.statusEngineCC+"','"+p.brandName+"','"+
+                p.sedanModelActive + "') ";
             try
             {
                 chk = conn.ExecuteNonQuery(sql);
@@ -128,7 +130,7 @@ namespace carInsuranceInit.objdb
                 sm.priceMin + "='" + p.priceMin + "', " +
                 sm.sedanCatCar + "='" + p.sedanCatCar + "', " +
                 sm.sedanEngineCC + "='" + p.sedanEngineCC + "', " +
-                //sm.sedanModel + "='" + p.sedanModel + "', " +
+                sm.priceMax + "='" + p.priceMax + "', " +
                 sm.statusEngineCC + "='" + p.statusEngineCC + "', " +
                 sm.brandName + "='" + p.brandName + "' " +
                 "Where " + sm.pkField + "='" + p.sedanModelId + "'";

@@ -16,8 +16,9 @@ namespace carInsuranceInit.gui
     {
         private CarIControl cic;
         SedanCapitalInsur sci;
-        int colRow = 0, colCapital = 1, colRateTInsur1 = 2, colRateTInsur2 = 3, colRateTInsur3 = 4, colSedanCapitalId = 5, colDel=6;
-        int colCnt = 7;
+        int colRow = 0, colCapital = 1, colRateTInsur1 = 2, colRateTInsur2 = 3, colRateTInsur3 = 4, colSedanCapitalId = 5, colDel=6, colEdit=7;
+        int colCnt = 8;
+        String edit = "";
         private void initConfig()
         {
             cic = new CarIControl();
@@ -39,7 +40,7 @@ namespace carInsuranceInit.gui
             DataTable dt = new DataTable();
             dgvAdd.ColumnCount = colCnt;
             dt = cic.selectSedanCapitalInsur();
-
+            dgvAdd.RowCount = 1;
             dgvAdd.RowCount = dt.Rows.Count + 1;
             dgvAdd.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvAdd.Columns[colRow].Width = 50;
@@ -50,6 +51,7 @@ namespace carInsuranceInit.gui
             dgvAdd.Columns[colRateTInsur3].Width = 125;
             dgvAdd.Columns[colSedanCapitalId].Width = 120;
             dgvAdd.Columns[colDel].Width = 50;
+            dgvAdd.Columns[colEdit].Width = 50;
             //dgvAdd.Columns[colAmount].Width = 120;
 
             dgvAdd.Columns[colRow].HeaderText = "ลำดับ";
@@ -59,6 +61,7 @@ namespace carInsuranceInit.gui
             dgvAdd.Columns[colRateTInsur2].HeaderText = "อัตรา ประเภท2";
             dgvAdd.Columns[colRateTInsur3].HeaderText = "อัตรา ประเภท3";
             dgvAdd.Columns[colDel].HeaderText = " ";
+            dgvAdd.Columns[colEdit].HeaderText = " ";
 
             dgvAdd.Columns[colSedanCapitalId].HeaderText = "sedanagedriverid";
             //dgvAdd.Columns[colAmount].HeaderText = "จำนวนเงิน";
@@ -126,6 +129,10 @@ namespace carInsuranceInit.gui
             Boolean chk = false;
             for (int i = 0; i < dgvAdd.RowCount; i++)
             {
+                if((dgvAdd[colEdit,i].Value!=null) && (!dgvAdd[colEdit,i].Value.ToString().Equals("*")))
+                {
+                    continue;
+                }
                 sci = getSedanCapitalInsur(i);
                 if (sci != null)
                 {
@@ -193,7 +200,11 @@ namespace carInsuranceInit.gui
             if (e.ColumnIndex == colDel)
             {
                 //MessageBox.Show("ต้องการยกเลิกข้อมูลรายการ","ยกเลิก");
-                DialogResult dialogResult = MessageBox.Show("ต้องการยกเลิกรายการ \n", "ยกเลิกรายการ", MessageBoxButtons.YesNo);
+                if (dgvAdd[colCapital, e.RowIndex].Value == null)
+                {
+                    return;
+                }
+                DialogResult dialogResult = MessageBox.Show("ต้องการยกเลิกรายการ \nทุนประกัน : "+dgvAdd[colCapital,e.RowIndex].Value.ToString(), "ยกเลิกรายการ", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
                     String sacId = "";
@@ -204,6 +215,27 @@ namespace carInsuranceInit.gui
                     }
                 }
             }
+        }
+
+        private void dgvAdd_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            if (!dgvAdd[e.ColumnIndex, e.RowIndex].Value.ToString().Equals(edit))
+            {
+                dgvAdd[colEdit, e.RowIndex].Value = "*";
+                dgvAdd.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.LightGray;
+
+            }
+        }
+
+        private void dgvAdd_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
+        {
+            edit = "";
+            if (dgvAdd[e.ColumnIndex, e.RowIndex].Value == null)
+            {
+                return;
+            }
+            edit = dgvAdd[e.ColumnIndex, e.RowIndex].Value.ToString();
+            dgvAdd[colEdit, e.RowIndex].Value = edit;
         }
 
     }

@@ -50,7 +50,9 @@
             this.dgvAdd.Name = "dgvAdd";
             this.dgvAdd.Size = new System.Drawing.Size(849, 395);
             this.dgvAdd.TabIndex = 4;
+            this.dgvAdd.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dgvAdd_CellBeginEdit);
             this.dgvAdd.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAdd_CellDoubleClick);
+            this.dgvAdd.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAdd_CellEndEdit);
             this.dgvAdd.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dgvAdd_EditingControlShowing);
             // 
             // FrmSedanCapitalInsur

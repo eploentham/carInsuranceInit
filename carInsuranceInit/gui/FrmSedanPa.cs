@@ -48,14 +48,16 @@ namespace carInsuranceInit.gui
             dgvAdd.Columns[colRateTInsur2].Width = 125;
             dgvAdd.Columns[colRateTInsur3].Width = 125;
             dgvAdd.Columns[colSedanCapitalId].Width = 120;
+            dgvAdd.Columns[colDel].Width = 50;
             //dgvAdd.Columns[colAmount].Width = 120;
 
             dgvAdd.Columns[colRow].HeaderText = "ลำดับ";
-            dgvAdd.Columns[colCapital].HeaderText = "บาดเจ็บ ครั้ง";
+            dgvAdd.Columns[colCapital].HeaderText = "PA";
             //dgvAdd.Columns[colCapitalMax].HeaderText = "ทุนประกันขั้นสูง";
             dgvAdd.Columns[colRateTInsur1].HeaderText = "อัตรา ประเภท1";
             dgvAdd.Columns[colRateTInsur2].HeaderText = "อัตรา ประเภท2";
             dgvAdd.Columns[colRateTInsur3].HeaderText = "อัตรา ประเภท3";
+            dgvAdd.Columns[colDel].HeaderText = " ";
 
             dgvAdd.Columns[colSedanCapitalId].HeaderText = "sedanagedriverid";
             //dgvAdd.Columns[colAmount].HeaderText = "จำนวนเงิน";
@@ -75,6 +77,7 @@ namespace carInsuranceInit.gui
                     dgvAdd[colRateTInsur1, i].Value = dt.Rows[i][cic.spadb.spa.RateTInsur1].ToString();
                     dgvAdd[colRateTInsur2, i].Value = dt.Rows[i][cic.spadb.spa.RateTInsur2].ToString();
                     dgvAdd[colRateTInsur3, i].Value = dt.Rows[i][cic.spadb.spa.RateTInsur3].ToString();
+                    dgvAdd[colDel, i].Value = "ยกเลิก";
                     if ((i % 2) != 0)
                     {
                         dgvAdd.Rows[i].DefaultCellStyle.BackColor = Color.LightSalmon;
@@ -188,7 +191,11 @@ namespace carInsuranceInit.gui
             if (e.ColumnIndex == colDel)
             {
                 //MessageBox.Show("ต้องการยกเลิกข้อมูลรายการ","ยกเลิก");
-                DialogResult dialogResult = MessageBox.Show("ต้องการยกเลิกรายการ \n", "ยกเลิกรายการ", MessageBoxButtons.YesNo);
+                if (dgvAdd[colCapital, e.RowIndex].Value == null)
+                {
+                    return;
+                }
+                DialogResult dialogResult = MessageBox.Show("ต้องการยกเลิกรายการ \nPA : " + dgvAdd[colCapital, e.RowIndex].Value.ToString(), "ยกเลิกรายการ", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
                     String sacId = "";

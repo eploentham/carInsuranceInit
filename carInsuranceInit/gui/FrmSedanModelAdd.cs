@@ -70,10 +70,12 @@ namespace carInsuranceInit.gui
             }
             if (sm.sedanModelActive.Equals("3"))
             {
+                chkUnActive.Checked = true;
                 setControlDisAbled();
             }
             else
             {
+                chkActive.Checked = true;
                 setControlEnAbled();
             }
             //cboTypeCust.Text = cic.smdb.selectCustomerTypeNameById(sm.sedanModelId);
@@ -117,6 +119,14 @@ namespace carInsuranceInit.gui
             else if (chkMax2000cc.Checked)
             {
                 sm.statusEngineCC = "2";
+            }
+            if (chkActive.Checked)
+            {
+                sm.sedanModelActive = "1";
+            }
+            else
+            {
+                sm.sedanModelActive = "3";
             }
             
         }

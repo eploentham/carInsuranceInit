@@ -192,7 +192,11 @@ namespace carInsuranceInit.gui
             if (e.ColumnIndex == colDel)
             {
                 //MessageBox.Show("ต้องการยกเลิกข้อมูลรายการ","ยกเลิก");
-                DialogResult dialogResult = MessageBox.Show("ต้องการยกเลิกรายการ \n", "ยกเลิกรายการ", MessageBoxButtons.YesNo);
+                if (dgvAdd[colCapital, e.RowIndex].Value == null)
+                {
+                    return;
+                }
+                DialogResult dialogResult = MessageBox.Show("ต้องการยกเลิกรายการ \nบาดเจ็บ ทรัพย์สิน : " + dgvAdd[colCapital, e.RowIndex].Value.ToString(), "ยกเลิกรายการ", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
                     String sacId = "";
