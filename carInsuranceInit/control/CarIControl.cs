@@ -12,6 +12,7 @@ namespace carInsuranceInit.control
 {
     class CarIControl
     {
+        public Config1 cf;
         String pathFileSedan =System.Environment.CurrentDirectory + "\\asset\\110\\";
         String pathFilePickUp210 = System.Environment.CurrentDirectory + "\\asset\\210\\";
         String pathFilePickUp320 = System.Environment.CurrentDirectory + "\\asset\\320\\";
@@ -52,6 +53,7 @@ namespace carInsuranceInit.control
         }
         private void initConfig()
         {
+            cf = new Config1();
             conn = new ConnectDB();
             wt = new WriteText();
 

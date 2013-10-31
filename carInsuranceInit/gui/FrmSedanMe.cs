@@ -89,23 +89,16 @@ namespace carInsuranceInit.gui
         private SedanMe getSedanMe(int row)
         {
             sme = new SedanMe();
-            if (dgvAdd[colRateTInsur1, row].Value == null)
+            if (dgvAdd[colCapital, row].Value == null)
             {
                 return null;
             }
-            sme.RateTInsur1 = dgvAdd[colRateTInsur1, row].Value.ToString();
-            sme.RateTInsur2 = dgvAdd[colRateTInsur2, row].Value.ToString();
-            sme.RateTInsur3 = dgvAdd[colRateTInsur3, row].Value.ToString();
+            sme.RateTInsur1 = cic.cf.ObjectNull(dgvAdd[colRateTInsur1, row].Value);
+            sme.RateTInsur2 = cic.cf.ObjectNull(dgvAdd[colRateTInsur2, row].Value);
+            sme.RateTInsur3 = cic.cf.ObjectNull(dgvAdd[colRateTInsur3, row].Value);
 
             sme.sedanMe = dgvAdd[colCapital, row].Value.ToString();
-            if (dgvAdd[colSedanCapitalId, row].Value != null)
-            {
-                sme.sedanMeId = dgvAdd[colSedanCapitalId, row].Value.ToString();
-            }
-            else
-            {
-                sme.sedanMeId = "";
-            }
+            sme.sedanMeId = cic.cf.ObjectNull(dgvAdd[colSedanCapitalId, row].Value);
 
             return sme;
         }

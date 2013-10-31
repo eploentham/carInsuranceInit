@@ -82,9 +82,9 @@ namespace carInsuranceInit.objdb
             p.RateTInsur3 = p.RateTInsur3.Replace(",", "");
 
             sql = "Insert Into " + spa.table + " (" + spa.pkField + "," + spa.sedanPa + "," +
-                spa.RateTInsur1 + "," + spa.RateTInsur2 + "," + spa.RateTInsur3 + ") " +
+                spa.RateTInsur1 + "," + spa.RateTInsur2 + "," + spa.RateTInsur3+","+spa.sedanPaActive + ") " +
                 "Values('" + p.sedanPaId + "','" + p.sedanPa + "','" +
-                p.RateTInsur1 + "','" + p.RateTInsur2 + "','" + p.RateTInsur3 + "')";
+                p.RateTInsur1 + "','" + p.RateTInsur2 + "','" + p.RateTInsur3+"','"+p.sedanPaActive + "')";
             try
             {
                 chk = conn.ExecuteNonQuery(sql);

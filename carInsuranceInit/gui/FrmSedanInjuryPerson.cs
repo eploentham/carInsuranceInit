@@ -90,23 +90,16 @@ namespace carInsuranceInit.gui
         private SedanInjuryPerson getSedanInjuryPerson(int row)
         {
             sip = new SedanInjuryPerson();
-            if (dgvAdd[colRateTInsur1, row].Value == null)
+            if (dgvAdd[colCapital, row].Value == null)
             {
                 return null;
             }
-            sip.RateTInsur1 = dgvAdd[colRateTInsur1, row].Value.ToString();
-            sip.RateTInsur2 = dgvAdd[colRateTInsur2, row].Value.ToString();
-            sip.RateTInsur3 = dgvAdd[colRateTInsur3, row].Value.ToString();
+            sip.RateTInsur1 = cic.cf.ObjectNull(dgvAdd[colRateTInsur1, row].Value);
+            sip.RateTInsur2 = cic.cf.ObjectNull(dgvAdd[colRateTInsur2, row].Value);
+            sip.RateTInsur3 = cic.cf.ObjectNull(dgvAdd[colRateTInsur3, row].Value);
 
             sip.sedanInjuryPerson = dgvAdd[colCapital, row].Value.ToString();
-            if (dgvAdd[colSedanCapitalId, row].Value != null)
-            {
-                sip.sedanInjuryPersonId = dgvAdd[colSedanCapitalId, row].Value.ToString();
-            }
-            else
-            {
-                sip.sedanInjuryPersonId = "";
-            }
+            sip.sedanInjuryPersonId = cic.cf.ObjectNull(dgvAdd[colSedanCapitalId, row].Value);
 
             return sip;
         }

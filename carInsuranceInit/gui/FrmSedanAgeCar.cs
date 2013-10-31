@@ -91,23 +91,16 @@ namespace carInsuranceInit.gui
         private SedanAgeCar getSedanAgeCar(int row)
         {
             sac = new SedanAgeCar();
-            if (dgvAdd[colRateTInsur1, row].Value == null)
+            if (dgvAdd[colAgeCar, row].Value == null)
             {
                 return null;
             }
-            sac.RateTInsur1 = dgvAdd[colRateTInsur1, row].Value.ToString();
-            sac.RateTInsur2 = dgvAdd[colRateTInsur2, row].Value.ToString();
-            sac.RateTInsur3 = dgvAdd[colRateTInsur3, row].Value.ToString();
+            sac.RateTInsur1 = cic.cf.ObjectNull(dgvAdd[colRateTInsur1, row].Value);
+            sac.RateTInsur2 = cic.cf.ObjectNull(dgvAdd[colRateTInsur2, row].Value);
+            sac.RateTInsur3 = cic.cf.ObjectNull(dgvAdd[colRateTInsur3, row].Value);
 
-            sac.sedanAgeCar = dgvAdd[colAgeCar, row].Value.ToString();
-            if (dgvAdd[colSedanAgeCarid, row].Value != null)
-            {
-                sac.sedanAgeCarId = dgvAdd[colSedanAgeCarid, row].Value.ToString();
-            }
-            else
-            {
-                sac.sedanAgeCarId = "";
-            }
+            sac.sedanAgeCar = cic.cf.ObjectNull(dgvAdd[colAgeCar, row].Value);
+            sac.sedanAgeCarId = cic.cf.ObjectNull(dgvAdd[colSedanAgeCarid, row].Value);
 
             return sac;
         }

@@ -85,19 +85,12 @@ namespace carInsuranceInit.gui
             {
                 return null;
             }
-            scc.Rate = dgvAdd[colCatRate, row].Value.ToString();
+            scc.Rate = cic.cf.ObjectNull(dgvAdd[colCatRate, row].Value);
             //scc. = dgvAdd[colRateTInsur2, row].Value.ToString();
             //sad.RateTInsur3 = dgvAdd[colRateTInsur3, row].Value.ToString();
 
             scc.sedanCatCar = dgvAdd[colCatCar, row].Value.ToString();
-            if (dgvAdd[colCatCarId, row].Value != null)
-            {
-                scc.sedanCatCarId = dgvAdd[colCatCarId, row].Value.ToString();
-            }
-            else
-            {
-                scc.sedanCatCarId = "";
-            }
+            scc.sedanCatCarId = cic.cf.ObjectNull(dgvAdd[colCatCarId, row].Value);
 
             return scc;
         }
