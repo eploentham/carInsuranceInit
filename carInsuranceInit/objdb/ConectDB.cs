@@ -1,4 +1,5 @@
-﻿using System;
+﻿using carInsuranceInit.object1;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -18,29 +19,31 @@ namespace carInsuranceInit.objdb
         public int portnumber = 0;
         public String UName = "", User1 = "", SS = "";
         public OleDbConnection _mainConnection = new OleDbConnection();
+        public MySql.Data.MySqlClient.MySqlConnection cMysql;
         public int _rowsAffected = 0;
         public SqlInt32 _errorCode = 0;
         public Boolean _isDisposed = false;
         public SqlConnection connMainHIS;
         //public OleDbConnection connMainHIS;
         private String hostname = "";
-
+        public InitConfig initc;
         public ConnectDB()
         {
-            _mainConnection = new OleDbConnection();
-            //_mainConnection.ConnectionString = GetConfig("Main.ConnectionString");
-            _mainConnection.ConnectionString = "Provider=Microsoft.Jet.OLEDB.4.0; Data Source=" + Environment.CurrentDirectory + "\\DataBase\\dsg.mdb;Persist Security Info=False";
-            if (Environment.Is64BitOperatingSystem)
-            {
-                _mainConnection.ConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0; Data Source=D:\\source\\github\\carInsuranceInit\\carInsuranceInit\\DataBase\\carInsuranceInit.mdb;Persist Security Info=False";
-                _mainConnection.ConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0; Data Source=" + Environment.CurrentDirectory + "\\DataBase\\carInsuranceInit.mdb;Persist Security Info=False";
-            }
-            else
-            {
-                _mainConnection.ConnectionString = "Provider=Microsoft.Jet.OLEDB.4.0; Data Source=D:\\source\\github\\carInsuranceInit\\carInsuranceInit\\DataBase\\carInsuranceInit.mdb;Persist Security Info=False";
-            }
-            
-            
+            //_mainConnection = new OleDbConnection();
+            ////_mainConnection.ConnectionString = GetConfig("Main.ConnectionString");
+            //_mainConnection.ConnectionString = "Provider=Microsoft.Jet.OLEDB.4.0; Data Source=" + Environment.CurrentDirectory + "\\DataBase\\dsg.mdb;Persist Security Info=False";
+            //if (Environment.Is64BitOperatingSystem)
+            //{
+            //    _mainConnection.ConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0; Data Source=D:\\source\\github\\carInsuranceInit\\carInsuranceInit\\DataBase\\carInsuranceInit.mdb;Persist Security Info=False";
+            //    _mainConnection.ConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0; Data Source=" + Environment.CurrentDirectory + "\\DataBase\\carInsuranceInit.mdb;Persist Security Info=False";
+            //}
+            //else
+            //{
+            //    _mainConnection.ConnectionString = "Provider=Microsoft.Jet.OLEDB.4.0; Data Source=D:\\source\\github\\carInsuranceInit\\carInsuranceInit\\DataBase\\carInsuranceInit.mdb;Persist Security Info=False";
+            //}
+
+            cMysql = new MySql.Data.MySqlClient.MySqlConnection();
+            cMysql.ConnectionString = "server=" + initc.ServerIP + ";uid=" + initc.User + ";pwd=" + initc.Password + ";database=" + initc.Database + ";CharSet=utf8;";
             _isDisposed = false;
         }
         public ConnectDB(String hostName)
