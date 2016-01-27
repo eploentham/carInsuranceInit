@@ -42,7 +42,7 @@ namespace carInsuranceInit.gui
             }
             else if (e.Node.Name.ToString() == "nSedanEngineCC")
             {
-                FrmSedanEngineCC frm = new FrmSedanEngineCC();
+                FrmSedanEngineCC frm = new FrmSedanEngineCC(cic);
                 showFrame(frm);
             }
             else if (e.Node.Name.ToString() == "nSedanAgeDriver")
@@ -67,23 +67,23 @@ namespace carInsuranceInit.gui
             }
             else if (e.Node.Name.ToString() == "nSedanInjuryPerson")
             {
-                FrmSedanInjuryPerson frm = new FrmSedanInjuryPerson();
+                FrmSedanInjuryPerson frm = new FrmSedanInjuryPerson(cic);
                 showFrame(frm);
             }
             else if (e.Node.Name.ToString() == "nSedanInjuryTime")
             {
-                FrmSedanInjuryTime frm = new FrmSedanInjuryTime();
+                FrmSedanInjuryTime frm = new FrmSedanInjuryTime(cic);
                 showFrame(frm);
             }
             else if (e.Node.Name.ToString() == "nSedanInjuryAsset")
             {
-                FrmSedanInjuryAsset frm = new FrmSedanInjuryAsset();
+                FrmSedanInjuryAsset frm = new FrmSedanInjuryAsset(cic);
                 showFrame(frm);
             }
             
             else if (e.Node.Name.ToString() == "nWriteText")
             {
-                FrmWriteText frm = new FrmWriteText();
+                FrmWriteText frm = new FrmWriteText(cic);
                 showFrame(frm);
             }
             else if (e.Node.Name.ToString() == "nBrand")
@@ -93,17 +93,17 @@ namespace carInsuranceInit.gui
             }
             else if (e.Node.Name.ToString() == "nSedanModel")
             {
-                FrmSedanModelView frm = new FrmSedanModelView();
+                FrmSedanModelView frm = new FrmSedanModelView(cic);
                 showFrame(frm);
             }
             else if (e.Node.Name.ToString() == "nSedanPa")
             {
-                FrmSedanPa frm = new FrmSedanPa();
+                FrmSedanPa frm = new FrmSedanPa(cic);
                 showFrame(frm);
             }
             else if (e.Node.Name.ToString() == "nSedanMe")
             {
-                FrmSedanMe frm = new FrmSedanMe();
+                FrmSedanMe frm = new FrmSedanMe(cic);
                 showFrame(frm);
             }
         }

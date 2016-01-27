@@ -92,7 +92,7 @@ namespace carInsuranceInit.gui
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            FrmSedanModelAdd frm = new FrmSedanModelAdd();
+            FrmSedanModelAdd frm = new FrmSedanModelAdd(cic);
             frm.ShowDialog(this);
             setData();
         }
@@ -113,7 +113,7 @@ namespace carInsuranceInit.gui
             {
                 return;
             }
-            FrmSedanModelAdd frmDepositAdd = new FrmSedanModelAdd();
+            FrmSedanModelAdd frmDepositAdd = new FrmSedanModelAdd(cic);
             frmDepositAdd.setData(dgvView[colSedanModelId, e.RowIndex].Value.ToString());
             frmDepositAdd.ShowDialog(this);
             setData();
