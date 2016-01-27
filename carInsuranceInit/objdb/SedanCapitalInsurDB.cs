@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace carInsuranceInit.objdb
 {
-    class SedanCapitalInsurDB
+    public class SedanCapitalInsurDB
     {
         private ConnectDB conn;
         public SedanCapitalInsur sci;

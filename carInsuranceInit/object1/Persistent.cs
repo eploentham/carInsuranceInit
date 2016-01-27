@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace carInsuranceInit.object1
 {
-    class Persistent
+    public class Persistent
     {
         public String table { get; set; }
         public String pkField { get; set; }

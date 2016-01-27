@@ -20,7 +20,7 @@ namespace carInsuranceInit.gui
         int colCnt = 4;
         private void initConfig()
         {
-            cic = new CarIControl();
+            //cic = new CarIControl();
             scc = new SedanCatCar();
         }
         private void setResize()
@@ -28,9 +28,10 @@ namespace carInsuranceInit.gui
             dgvAdd.Width = this.Width - 50;
             dgvAdd.Height = this.Height - 150;
         }
-        public FrmSedanCatCar()
+        public FrmSedanCatCar(CarIControl c)
         {
             InitializeComponent();
+            cic = c;
             initConfig();
             setData();
         }

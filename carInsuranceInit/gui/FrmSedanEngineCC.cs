@@ -18,7 +18,7 @@ namespace carInsuranceInit.gui
         private SedanEngineCC sec;
         private void initConfig()
         {
-            cic = new CarIControl();
+            //cic = new CarIControl();
             sec = new SedanEngineCC();
 
             setControl();
@@ -45,9 +45,10 @@ namespace carInsuranceInit.gui
             sec.sedanEngine2000CCMaxTInsur3 = txtCCMaxTInsur3.Text;
             return sec;
         }
-        public FrmSedanEngineCC()
+        public FrmSedanEngineCC(CarIControl c)
         {
             InitializeComponent();
+            cic = c;
             initConfig();
         }
 

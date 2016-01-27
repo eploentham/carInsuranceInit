@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace carInsuranceInit.object1
 {
-    class Amphur : Persistent
+    public class Amphur : Persistent
     {
         public String amphurId = "";
         public String amphurCode = "";

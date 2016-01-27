@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace carInsuranceInit.object1
 {
-    class Config1
+    public class Config1
     {
         public String formatNumber = "{0:##,#.00}";
         public String formatInt = "{0:##,#}";

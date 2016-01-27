@@ -18,7 +18,7 @@ namespace carInsuranceInit.gui
         private SedanUseCar suc;
         private void initConfig()
         {
-            cic = new CarIControl();
+            //cic = new CarIControl();
             suc = new SedanUseCar();
             
             setControl();
@@ -45,9 +45,10 @@ namespace carInsuranceInit.gui
              suc.sedanUseCar120TInsur3 = txt120TInsur3.Text;
              return suc;
         }
-        public FrmSedanUseCar()
+        public FrmSedanUseCar(CarIControl c)
         {
             InitializeComponent();
+            cic = c;
             initConfig();
         }
 

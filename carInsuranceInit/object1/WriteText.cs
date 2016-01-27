@@ -31,7 +31,7 @@ namespace carInsuranceInit.object1
         }
         private void initConfig()
         {
-            conn = new ConnectDB();
+            //conn = new ConnectDB();
         }
         private void writeSedanAgeCar()
         {

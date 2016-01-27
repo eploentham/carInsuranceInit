@@ -177,6 +177,7 @@
     <Compile Include="object1\ComboBoxItem.cs" />
     <Compile Include="object1\Config1.cs" />
     <Compile Include="object1\District.cs" />
+    <Compile Include="object1\IniFile.cs" />
     <Compile Include="object1\InitConfig.cs" />
     <Compile Include="object1\SedanMe.cs" />
     <Compile Include="object1\SedanModel.cs" />

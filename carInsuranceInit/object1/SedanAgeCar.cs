@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace carInsuranceInit.object1
 {
-    class SedanAgeCar : Persistent
+    public class SedanAgeCar : Persistent
     {
         public String sedanAgeCarId = "";
         public String sedanAgeCar = "";

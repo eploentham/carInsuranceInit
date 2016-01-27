@@ -5,7 +5,7 @@ using System.Text;
 
 namespace carInsuranceInit.object1
 {
-    class SedanInjuryAsset:Persistent
+    public class SedanInjuryAsset:Persistent
     {
         public String sedanInjuryAsset = "";
         public String sedanInjuryAssetId = "";

@@ -21,16 +21,17 @@ namespace carInsuranceInit.gui
         private void initConfig()
         {
             sac = new SedanAgeCar();
-            cic = new CarIControl();
+            //cic = new CarIControl();
         }
         private void setResize()
         {
             dgvAdd.Width = this.Width - 50;
             dgvAdd.Height = this.Height - 150;
         }
-        public FrmSedanAgeCar()
+        public FrmSedanAgeCar(CarIControl c)
         {
             InitializeComponent();
+            cic = c;
             initConfig();
             setData();
         }

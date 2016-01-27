@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace carInsuranceInit.objdb
 {
-    class SedanEngineCCDB
+    public class SedanEngineCCDB
     {
         private ConnectDB conn;
         public SedanEngineCC sec;

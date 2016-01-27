@@ -23,9 +23,10 @@ namespace carInsuranceInit.gui
             sit = new SedanInjuryTime();
             cboBrand = cic.branddb.getCboCustomer(cboBrand);
         }
-        public FrmSedanModelView()
+        public FrmSedanModelView(CarIControl c)
         {
             InitializeComponent();
+            cic = c;
             initConfig();
         }
         private void setResize()

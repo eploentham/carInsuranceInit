@@ -17,15 +17,16 @@ namespace carInsuranceInit.gui
         Brand brand;
         int colRow = 0, colBrandName = 1, colCatRate = 2, colBrandId = 3;
         int colCnt = 4;
-        public FrmBrand()
+        public FrmBrand(CarIControl c)
         {
             InitializeComponent();
+            cic = c;
             initConfig();
         }
         private void initConfig()
         {
             brand = new Brand();
-            cic = new CarIControl();
+            //cic = new CarIControl();
             setData();
         }
         private void setResize()

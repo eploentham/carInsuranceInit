@@ -21,7 +21,7 @@ namespace carInsuranceInit.gui
         String edit = "";
         private void initConfig()
         {
-            cic = new CarIControl();
+            //cic = new CarIControl();
             sci = new SedanCapitalInsur();
         }
         private void setResize()
@@ -29,9 +29,10 @@ namespace carInsuranceInit.gui
             dgvAdd.Width = this.Width - 50;
             dgvAdd.Height = this.Height - 150;
         }
-        public FrmSedanCapitalInsur()
+        public FrmSedanCapitalInsur(CarIControl c)
         {
             InitializeComponent();
+            cic = c;
             initConfig();
             setData();
         }

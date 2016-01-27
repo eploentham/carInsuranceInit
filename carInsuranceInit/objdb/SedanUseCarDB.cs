@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace carInsuranceInit.objdb
 {
-    class SedanUseCarDB
+    public class SedanUseCarDB
     {
         private ConnectDB conn;
         public SedanUseCar suc;

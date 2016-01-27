@@ -15,11 +15,12 @@ namespace carInsuranceInit.gui
         CarIControl cic;
         private void initConfig()
         {
-            cic = new CarIControl();
+            //cic = new CarIControl();
         }
-        public FrmWriteText()
+        public FrmWriteText(CarIControl c)
         {
             InitializeComponent();
+            cic = c;
             initConfig();
             setTab();
         }

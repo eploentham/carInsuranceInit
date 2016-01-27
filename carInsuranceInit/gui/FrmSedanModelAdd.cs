@@ -17,13 +17,14 @@ namespace carInsuranceInit.gui
         SedanModel sm;
         private void initConfig()
         {
-            cic = new CarIControl();
+            //cic = new CarIControl();
             sm = new SedanModel();
             cboBrand = cic.branddb.getCboCustomer(cboBrand);
         }
-        public FrmSedanModelAdd()
+        public FrmSedanModelAdd(CarIControl c)
         {
             InitializeComponent();
+            cic = c;
             initConfig();
         }
         public void setData(String sedanModelId)

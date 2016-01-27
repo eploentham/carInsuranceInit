@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace carInsuranceInit.objdb
 {
-    class BrandDB
+    public class BrandDB
     {
         ConnectDB conn;
         public Brand brand;

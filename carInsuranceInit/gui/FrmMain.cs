@@ -1,4 +1,5 @@
-﻿using System;
+﻿using carInsuranceInit.control;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,9 +14,11 @@ namespace carInsuranceInit.gui
 {
     public partial class FrmMain : Form
     {
+        private CarIControl cic;
         public FrmMain()
         {
             InitializeComponent();
+            cic = new CarIControl();
         }
         private void showFrame(Form f)
         {
@@ -34,7 +37,7 @@ namespace carInsuranceInit.gui
 
             if (e.Node.Name.ToString() == "nSedanUseCar")
             {
-                FrmSedanUseCar frm = new FrmSedanUseCar();
+                FrmSedanUseCar frm = new FrmSedanUseCar(cic);
                 showFrame(frm);
             }
             else if (e.Node.Name.ToString() == "nSedanEngineCC")
@@ -44,22 +47,22 @@ namespace carInsuranceInit.gui
             }
             else if (e.Node.Name.ToString() == "nSedanAgeDriver")
             {
-                FrmSedanAgeDriver frm = new FrmSedanAgeDriver();
+                FrmSedanAgeDriver frm = new FrmSedanAgeDriver(cic);
                 showFrame(frm);
             }
             else if (e.Node.Name.ToString() == "nSedanAgeCar")
             {
-                FrmSedanAgeCar frm = new FrmSedanAgeCar();
+                FrmSedanAgeCar frm = new FrmSedanAgeCar(cic);
                 showFrame(frm);
             }
             else if (e.Node.Name.ToString() == "nSedanCapitalInsur")
             {
-                FrmSedanCapitalInsur frm = new FrmSedanCapitalInsur();
+                FrmSedanCapitalInsur frm = new FrmSedanCapitalInsur(cic);
                 showFrame(frm);
             }
             else if (e.Node.Name.ToString() == "nSedanCatCar")
             {
-                FrmSedanCatCar frm = new FrmSedanCatCar();
+                FrmSedanCatCar frm = new FrmSedanCatCar(cic);
                 showFrame(frm);
             }
             else if (e.Node.Name.ToString() == "nSedanInjuryPerson")
@@ -85,7 +88,7 @@ namespace carInsuranceInit.gui
             }
             else if (e.Node.Name.ToString() == "nBrand")
             {
-                FrmBrand frm = new FrmBrand();
+                FrmBrand frm = new FrmBrand(cic);
                 showFrame(frm);
             }
             else if (e.Node.Name.ToString() == "nSedanModel")

@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace carInsuranceInit.control
 {
-    class CarIControl
+    public class CarIControl
     {
         public Config1 cf;
         String pathFileSedan =System.Environment.CurrentDirectory + "\\asset\\110\\";
@@ -46,15 +46,19 @@ namespace carInsuranceInit.control
         SedanModel sm;
 
         WriteText wt;
-
+        public InitConfig initC;
+        private IniFile iniFile;
         public CarIControl()
         {
             initConfig();
         }
         private void initConfig()
         {
+            iniFile = new IniFile(Environment.CurrentDirectory + "\\" + Application.ProductName + ".ini");
+            initC = new InitConfig();
+            GetConfig();
             cf = new Config1();
-            conn = new ConnectDB();
+            conn = new ConnectDB(initC);
             wt = new WriteText();
 
             suc = new SedanUseCar();
@@ -90,6 +94,26 @@ namespace carInsuranceInit.control
             spadb = new SedanPaDB(conn);
             smedb = new SedanMeDB(conn);
             smdb = new SedanModelDB(conn);
+
+            
+        }
+        public void GetConfig()
+        {
+            initC.clearInput = iniFile.Read("clearinput");
+            initC.connectDatabaseServer = iniFile.Read("connectdatabaseserver");
+            initC.ServerIP = iniFile.Read("host");
+            initC.User = iniFile.Read("username");
+            initC.Password = iniFile.Read("password");
+
+            initC.pathImageLogo = iniFile.Read("pathimagelogo");
+            
+            initC.PathReport = iniFile.Read("pathreport");
+
+            initC.Database = iniFile.Read("database");
+            //initC.connectServer = regE.getConnectServer();
+            //initC.ServerIP = regE.getServerIP();
+            //initC.User = regE.getUsername();
+            //initC.Password = regE.getPassword();
         }
         public SedanUseCar selectSedanUsecar()
         {
